@@ -7,7 +7,7 @@
  * Plugin Name:       Plugin Name
  * Plugin URI:        https://github.com/davetgreen/plugin-name
  * Description:       A brief description of the plugin.
- * Version:           0.0.1
+ * Version:           0.1.0
  * Author:            Dave Green <hello@davetgreen.me>
  * Author URI:        http://www.davetgreen.me
  * License:           GPL-2.0+
