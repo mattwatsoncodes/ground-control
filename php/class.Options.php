@@ -85,7 +85,7 @@ class Options {
 	public function add_options_page() {
 		// For WordPress this is options-general.php,
 		// for WooCommerce it is edit.php?post_type=shop_order.
-		add_submenu_page( 'options-general.php', esc_html__( 'Plugin Name', DTG_PLUGIN_NAME_TEXT_DOMAIN ), esc_html__( 'Plugin Name', DTG_PLUGIN_NAME_TEXT_DOMAIN ), 'manage_options', 'plugin_name', array( $this, 'render_options_page' ) );
+		add_submenu_page( 'options-general.php', esc_html__( 'Example Settings', DTG_PLUGIN_NAME_TEXT_DOMAIN ), esc_html__( 'Plugin Name', DTG_PLUGIN_NAME_TEXT_DOMAIN ), 'manage_options', 'plugin_name', array( $this, 'render_options_page' ) );
 	}
 
 	/**
