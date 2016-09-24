@@ -23,25 +23,29 @@ define( 'DTG_PLUGIN_NAME_TEXT_DOMAIN', 'plugin-name' );
 // Classes.
 require_once 'php/class.MainController.php';
 require_once 'php/class.Options.php';
-require_once 'php/class.AssetsController.php';
+require_once 'php/class.AdminAssetsController.php';
+require_once 'php/class.PublicAssetsController.php';
 require_once 'php/class.ActivationController.php';
 require_once 'php/class.DeactivationController.php';
 
 // Namespaces.
 use dtg\plugin_name\MainController;
 use dtg\plugin_name\Options;
-use dtg\plugin_name\AssetsController;
+use dtg\plugin_name\AdminAssetsController;
+use dtg\plugin_name\PublicAssetsController;
 use dtg\plugin_name\ActivationController;
 use dtg\plugin_name\DeactivationController;
 
 // Init.
-$options                 = new Options();
-$assets_controller       = new AssetsController();
-$activation_controller   = new ActivationController();
-$deactivation_controller = new DeactivationController();
-$main_controller         = new MainController(
+$options                  = new Options();
+$admin_assets_controller  = new AdminAssetsController();
+$public_assets_controller = new PublicAssetsController();
+$activation_controller    = new ActivationController();
+$deactivation_controller  = new DeactivationController();
+$main_controller          = new MainController(
 	$options,
-	$assets_controller,
+	$admin_assets_controller,
+	$public_assets_controller,
 	$activation_controller,
 	$deactivation_controller
 );
