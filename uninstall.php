@@ -19,5 +19,5 @@
 
 // Exit if WordPress hasn't requested the uninstall.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-	exit;
+	die;
 }
