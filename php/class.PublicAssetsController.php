@@ -2,7 +2,7 @@
 namespace dtg\plugin_name;
 
 /**
- * Class AdminAssetsController
+ * Class PublicAssetsController
  *
  * Sets up the public JS and CSS needed for this plugin.
  *
@@ -11,7 +11,7 @@ namespace dtg\plugin_name;
  *
  * @package dtg\plugin_name
  */
-class AdminAssetsController {
+class PublicAssetsController {
 
 	/**
 	 * Constructor.
