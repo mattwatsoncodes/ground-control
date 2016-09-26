@@ -16,6 +16,11 @@
  * Domain Path:       /languages
  */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 // Constants.
 define( 'DTG_PLUGIN_NAME_ROOT', __FILE__ );
 define( 'DTG_PLUGIN_NAME_TEXT_DOMAIN', 'plugin-name' );
