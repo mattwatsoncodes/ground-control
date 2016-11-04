@@ -16,38 +16,43 @@
  * Domain Path:       /languages
  */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 // Constants.
 define( 'DTG_PLUGIN_NAME_ROOT', __FILE__ );
 define( 'DTG_PLUGIN_NAME_TEXT_DOMAIN', 'plugin-name' );
 
 // Classes.
 require_once 'php/class.MainController.php';
-require_once 'php/class.Options.php';
 require_once 'php/class.AdminAssetsController.php';
 require_once 'php/class.PublicAssetsController.php';
-require_once 'php/class.ActivationController.php';
-require_once 'php/class.DeactivationController.php';
+require_once 'php/class.Options.php';
+require_once 'php/class.Activator.php';
+require_once 'php/class.Deactivator.php';
 
 // Namespaces.
 use dtg\plugin_name\MainController;
-use dtg\plugin_name\Options;
 use dtg\plugin_name\AdminAssetsController;
 use dtg\plugin_name\PublicAssetsController;
-use dtg\plugin_name\ActivationController;
-use dtg\plugin_name\DeactivationController;
+use dtg\plugin_name\Options;
+use dtg\plugin_name\Activator;
+use dtg\plugin_name\Deactivator;
 
-// Init.
-$options                  = new Options();
+// Instances.
 $admin_assets_controller  = new AdminAssetsController();
 $public_assets_controller = new PublicAssetsController();
-$activation_controller    = new ActivationController();
-$deactivation_controller  = new DeactivationController();
+$options                  = new Options();
+$activator    			  = new Activator();
+$deactivator  			  = new Deactivator();
 $main_controller          = new MainController(
-	$options,
 	$admin_assets_controller,
 	$public_assets_controller,
-	$activation_controller,
-	$deactivation_controller
+	$options,
+	$activator,
+	$deactivator
 );
 
 // Go!

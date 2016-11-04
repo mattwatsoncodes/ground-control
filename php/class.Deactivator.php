@@ -2,16 +2,16 @@
 namespace dtg\plugin_name;
 
 /**
- * Class DeactivationController
+ * Class Deactivator
  *
- * Carry out action
+ * Carry out actions when the plugin is deactivated.
  *
  * @link		https://github.com/davetgreen/plugin-name
  * @since		0.1.0
  *
  * @package dtg\plugin_name
  */
-class DeactivationController {
+class Deactivator {
 
 	/**
 	 * Constructor.
@@ -27,8 +27,8 @@ class DeactivationController {
 	 * @since		0.1.0
 	 */
 	public function run() {
-		register_deactivation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'deactivation_notices' ) );
-		register_deactivation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'deactivation_tasks' ) );
+		register_deactivation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'deactivation_notices' ), 10 );
+		register_deactivation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'deactivation_tasks' ), 10 );
 	}
 
 	/**
@@ -55,7 +55,7 @@ class DeactivationController {
 	 *
 	 * @since    0.1.0
 	 */
-	public static function deactivation_admin_notice() {
+	public function deactivation_admin_notice() {
 
 		// If we have notices.
 		if ( $notices = get_option( 'plugin_name_deferred_admin_notices' ) ) {
@@ -93,7 +93,7 @@ class DeactivationController {
 	 *
 	 * @since    0.1.0
 	 */
-	public static function deactivation_add_notice() {
+	public function deactivation_add_notice() {
 
 		// Retrieve any existing notices.
 		$notices = get_option( 'plugin_name_deferred_admin_notices', array() );

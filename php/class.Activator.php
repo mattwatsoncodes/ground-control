@@ -2,16 +2,16 @@
 namespace dtg\plugin_name;
 
 /**
- * Class ActivationController
+ * Class Activator
  *
- * Carry out action
+ * Carry out actions when the plugin is activated.
  *
  * @link		https://github.com/davetgreen/plugin-name
  * @since		0.1.0
  *
  * @package dtg\plugin_name
  */
-class ActivationController {
+class Activator {
 
 	/**
 	 * Constructor.
@@ -27,8 +27,8 @@ class ActivationController {
 	 * @since		0.1.0
 	 */
 	public function run() {
-		register_activation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'activation_notices' ) );
-		register_activation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'activation_tasks' ) );
+		register_activation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'activation_notices' ), 10 );
+		register_activation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'activation_tasks' ), 10 );
 	}
 
 	/**
@@ -55,8 +55,7 @@ class ActivationController {
 	 *
 	 * @since    0.1.0
 	 */
-	public static function activation_admin_notice() {
-
+	public function activation_admin_notice() {
 		// If we have notices.
 		if ( $notices = get_option( 'plugin_name_deferred_admin_notices' ) ) {
 
@@ -93,7 +92,7 @@ class ActivationController {
 	 *
 	 * @since    0.1.0
 	 */
-	public static function activation_add_notice() {
+	public function activation_add_notice() {
 
 		// Retrieve any existing notices.
 		$notices = get_option( 'plugin_name_deferred_admin_notices', array() );
