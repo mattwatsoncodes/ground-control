@@ -18,7 +18,10 @@ class Activator {
 	 *
 	 * @since		0.1.0
 	 */
-	function __construct() {
+	public function __construct( $plugin_root, $plugin_textdomain, $plugin_prefix ) {
+		$this->plugin_root 		 = $plugin_root;
+		$this->plugin_textdomain = $plugin_textdomain;
+		$this->plugin_prefix     = $plugin_prefix;
 	}
 
 	/**
@@ -27,8 +30,8 @@ class Activator {
 	 * @since		0.1.0
 	 */
 	public function run() {
-		register_activation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'activation_notices' ), 10 );
-		register_activation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'activation_tasks' ), 10 );
+		register_activation_hook( $this->plugin_root, array( $this, 'activation_notices' ), 10 );
+		register_activation_hook( $this->plugin_root, array( $this, 'activation_tasks' ), 10 );
 	}
 
 	/**
@@ -57,7 +60,7 @@ class Activator {
 	 */
 	public function activation_admin_notice() {
 		// If we have notices.
-		if ( $notices = get_option( 'plugin_name_deferred_admin_notices' ) ) {
+		if ( $notices = get_option( $this->plugin_prefix . '_deferred_admin_notices' ) ) {
 
 			// Loop through the array and generate the notices.
 			foreach ( $notices as $notice ) {
@@ -65,7 +68,7 @@ class Activator {
 			}
 
 			// Clear out our notices option.
-			delete_option( 'plugin_name_deferred_admin_notices' );
+			delete_option( $this->plugin_prefix . '_deferred_admin_notices' );
 		}
 	}
 
@@ -77,10 +80,10 @@ class Activator {
 	public function activation_admin_init() {
 
 		// Ensure the notice is shown only once.
-		if ( 1 != get_option( 'plugin_name_notice' ) ) {
+		if ( 1 != get_option( $this->plugin_prefix . '_activation_notice' ) ) {
 
 			// Save the fact the plugin is active in an option.
-			add_option( 'plugin_name_notice', 1 );
+			add_option( $this->plugin_prefix . '_activation_notice', 1 );
 
 			// Add our activation notice.
 			$this->activation_add_notice();
@@ -95,16 +98,16 @@ class Activator {
 	public function activation_add_notice() {
 
 		// Retrieve any existing notices.
-		$notices = get_option( 'plugin_name_deferred_admin_notices', array() );
+		$notices = get_option( $this->plugin_prefix . '_deferred_admin_notices', array() );
 
 		// Prepare our notice.
-		$msg        = __( 'Plugin Name has been successfully activated.', DTG_PLUGIN_NAME_TEXT_DOMAIN );
-		$activation = apply_filters( 'plugin_name_activation_notice_text', $msg );
+		$activation_text   = __( 'Plugin Name has been successfully activated.', $this->plugin_textdomain );
+		$activation_notice = apply_filters( $this->plugin_prefix . '_activation_notice', $activation_text );
 
 		// Add our activation notice to the array.
-		$notices[] = $activation;
+		$notices[] = $activation_notice;
 
 		// Update the notices setting including our notice.
-		update_option( 'plugin_name_deferred_admin_notices', $notices );
+		update_option( $this->plugin_prefix . '_deferred_admin_notices', $notices );
 	}
 }

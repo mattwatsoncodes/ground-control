@@ -69,14 +69,19 @@ class MainController {
 		PublicAssetsController $public_assets_controller,
 		Options $options,
 		Activator $activator,
-		Deactivator $deactivator ) {
-
+		Deactivator $deactivator,
+		$plugin_root,
+		$plugin_textdomain,
+		$plugin_prefix ) {
 
 		$this->admin_assets_controller  = $admin_assets_controller;
 		$this->public_assets_controller = $public_assets_controller;
 		$this->options                  = $options;
 		$this->activator    			= $activator;
 		$this->deactivator  			= $deactivator;
+		$this->plugin_root				= $plugin_root;
+		$this->plugin_textdomain		= $plugin_textdomain;
+		$this->plugin_prefix			= $plugin_prefix;
 	}
 
 	/**
@@ -85,7 +90,7 @@ class MainController {
 	 * @since		0.1.0
 	 */
 	public function run() {
-		load_plugin_textdomain( DTG_PLUGIN_NAME_TEXT_DOMAIN, false, DTG_PLUGIN_NAME_ROOT . '\..\languages' );
+		load_plugin_textdomain( $this->plugin_textdomain, false, $this->plugin_root . '/../languages' );
 
 		$this->options->run();
 		$this->admin_assets_controller->run();

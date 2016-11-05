@@ -18,7 +18,10 @@ class AdminAssetsController {
 	 *
 	 * @since    0.1.0
 	 */
-	function __construct() {
+	public function __construct( $plugin_root, $plugin_textdomain, $plugin_prefix ) {
+		$this->plugin_root 		 = $plugin_root;
+		$this->plugin_textdomain = $plugin_textdomain;
+		$this->plugin_prefix     = $plugin_prefix;
 	}
 
 	/**
@@ -37,11 +40,11 @@ class AdminAssetsController {
 	 */
 	public function admin_enqueue_scripts() {
 
-		$plugin_admin_css_url = plugins_url( 'css/admin.css', DTG_PLUGIN_NAME_ROOT );
-		$plugin_admin_js_url  = plugins_url( 'js/admin.js', DTG_PLUGIN_NAME_ROOT );
+		$admin_css_url = plugins_url( 'css/admin.css', $this->plugin_root );
+		$admin_js_url  = plugins_url( 'js/admin.js', $this->plugin_root );
 
-		wp_enqueue_style( DTG_PLUGIN_NAME_TEXT_DOMAIN, $plugin_admin_css_url );
-		wp_enqueue_script( DTG_PLUGIN_NAME_TEXT_DOMAIN, $plugin_admin_js_url );
+		wp_enqueue_style( $this->plugin_textdomain, $admin_css_url );
+		wp_enqueue_script( $this->plugin_textdomain, $admin_js_url );
 
 	}
 }

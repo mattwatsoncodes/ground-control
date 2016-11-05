@@ -21,9 +21,10 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Constants.
-define( 'DTG_PLUGIN_NAME_ROOT', __FILE__ );
-define( 'DTG_PLUGIN_NAME_TEXT_DOMAIN', 'plugin-name' );
+// Variables.
+$plugin_root 	   = __FILE__;
+$plugin_textdomain = 'plugin-name';
+$plugin_prefix	   = 'plugin_name';
 
 // Classes.
 require_once 'php/class.MainController.php';
@@ -42,17 +43,20 @@ use dtg\plugin_name\Activator;
 use dtg\plugin_name\Deactivator;
 
 // Instances.
-$admin_assets_controller  = new AdminAssetsController();
-$public_assets_controller = new PublicAssetsController();
-$options                  = new Options();
-$activator    			  = new Activator();
-$deactivator  			  = new Deactivator();
+$admin_assets_controller  = new AdminAssetsController( $plugin_root, $plugin_textdomain, $plugin_prefix );
+$public_assets_controller = new PublicAssetsController( $plugin_root, $plugin_textdomain, $plugin_prefix );
+$options                  = new Options( $plugin_root, $plugin_textdomain, $plugin_prefix );
+$activator    			  = new Activator( $plugin_root, $plugin_textdomain, $plugin_prefix );
+$deactivator  			  = new Deactivator( $plugin_root, $plugin_textdomain, $plugin_prefix );
 $main_controller          = new MainController(
 	$admin_assets_controller,
 	$public_assets_controller,
 	$options,
 	$activator,
-	$deactivator
+	$deactivator,
+	$plugin_root,
+	$plugin_textdomain,
+	$plugin_prefix
 );
 
 // Go!

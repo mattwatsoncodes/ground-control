@@ -18,7 +18,10 @@ class Deactivator {
 	 *
 	 * @since		0.1.0
 	 */
-	function __construct() {
+	public function __construct( $plugin_root, $plugin_textdomain, $plugin_prefix ) {
+		$this->plugin_root 		 = $plugin_root;
+		$this->plugin_textdomain = $plugin_textdomain;
+		$this->plugin_prefix     = $plugin_prefix;
 	}
 
 	/**
@@ -27,8 +30,8 @@ class Deactivator {
 	 * @since		0.1.0
 	 */
 	public function run() {
-		register_deactivation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'deactivation_notices' ), 10 );
-		register_deactivation_hook( DTG_PLUGIN_NAME_ROOT, array( $this, 'deactivation_tasks' ), 10 );
+		register_deactivation_hook( $this->plugin_root, array( $this, 'deactivation_notices' ), 10 );
+		register_deactivation_hook( $this->plugin_root, array( $this, 'deactivation_tasks' ), 10 );
 	}
 
 	/**
@@ -51,14 +54,14 @@ class Deactivator {
 	}
 
 	/**
-	 * Output notices on plugin activation.
+	 * Output notices on plugin deactivation.
 	 *
 	 * @since    0.1.0
 	 */
 	public function deactivation_admin_notice() {
 
 		// If we have notices.
-		if ( $notices = get_option( 'plugin_name_deferred_admin_notices' ) ) {
+		if ( $notices = get_option( $this->plugin_prefix . '_deferred_admin_notices' ) ) {
 
 			// Loop through the array and generate the notices.
 			foreach ( $notices as $notice ) {
@@ -66,22 +69,22 @@ class Deactivator {
 			}
 
 			// Clear out our notices option.
-			delete_option( 'plugin_name_deferred_admin_notices' );
+			delete_option( $this->plugin_prefix . '_deferred_admin_notices' );
 		}
 	}
 
 	/**
-	 * Add an activation notice if we haven't already displayed one.
+	 * Add an deactivation notice if we haven't already displayed one.
 	 *
 	 * @since    0.1.0
 	 */
 	public function deactivation_admin_init() {
 
 		// Ensure the notice is shown only once.
-		if ( 1 != get_option( 'plugin_name_notice' ) ) {
+		if ( 1 != get_option( $this->plugin_prefix . '_deactivation_notice' ) ) {
 
 			// Save the fact the plugin is active in an option.
-			add_option( 'plugin_name_notice', 1 );
+			add_option( $this->plugin_prefix . '_deactivation_notice', 1 );
 
 			// Add our activation notice.
 			$this->add_notice();
@@ -96,16 +99,16 @@ class Deactivator {
 	public function deactivation_add_notice() {
 
 		// Retrieve any existing notices.
-		$notices = get_option( 'plugin_name_deferred_admin_notices', array() );
+		$notices = get_option( $this->plugin_prefix . '_deferred_admin_notices', array() );
 
 		// Prepare our notice.
-		$msg        = __( 'Plugin Name has been successfully deactivated.', DTG_PLUGIN_NAME_TEXT_DOMAIN );
-		$activation = apply_filters( 'plugin_name_activation_notice_text', $msg );
+		$deactivation_text   = __( 'Plugin Name has been successfully deactivated.', $this->plugin_textdomain );
+		$deactivation_notice = apply_filters( $this->plugin_prefix . '_activation_notice', $deactivation_text );
 
 		// Add our activation notice to the array.
-		$notices[] = $activation;
+		$notices[] = $deactivation_notice;
 
 		// Update the notices setting including our notice.
-		update_option( 'plugin_name_deferred_admin_notices', $notices );
+		update_option( $this->plugin_prefix . '_deferred_admin_notices', $notices );
 	}
 }
