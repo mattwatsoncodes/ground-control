@@ -1,6 +1,7 @@
 <?php
-
 /**
+ * Plugin Name
+ *
  * @link              https://github.com/davetgreen/plugin-name
  * @package           dtg\plugin-name
  *
@@ -22,41 +23,45 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Variables.
-$plugin_root 	   = __FILE__;
-$plugin_textdomain = 'plugin-name';
-$plugin_prefix	   = 'plugin_name';
+$root 	    = __FILE__;
+$prefix	    = 'plugin_name';
+$textdomain = 'plugin-name';
 
 // Classes.
-require_once 'php/class.MainController.php';
+require_once 'php/class.Activator.php';
+require_once 'php/class.Deactivator.php';
+require_once 'php/class.Uninstaller.php';
 require_once 'php/class.AdminAssetsController.php';
 require_once 'php/class.PublicAssetsController.php';
 require_once 'php/class.Options.php';
-require_once 'php/class.Activator.php';
-require_once 'php/class.Deactivator.php';
+require_once 'php/class.MainController.php';
 
 // Namespaces.
-use dtg\plugin_name\MainController;
+use dtg\plugin_name\Activator;
+use dtg\plugin_name\Deactivator;
+use dtg\plugin_name\Uninstaller;
 use dtg\plugin_name\AdminAssetsController;
 use dtg\plugin_name\PublicAssetsController;
 use dtg\plugin_name\Options;
-use dtg\plugin_name\Activator;
-use dtg\plugin_name\Deactivator;
+use dtg\plugin_name\MainController;
 
 // Instances.
-$admin_assets_controller  = new AdminAssetsController( $plugin_root, $plugin_textdomain, $plugin_prefix );
-$public_assets_controller = new PublicAssetsController( $plugin_root, $plugin_textdomain, $plugin_prefix );
-$options                  = new Options( $plugin_root, $plugin_textdomain, $plugin_prefix );
-$activator    			  = new Activator( $plugin_root, $plugin_textdomain, $plugin_prefix );
-$deactivator  			  = new Deactivator( $plugin_root, $plugin_textdomain, $plugin_prefix );
+$activator    			  = new Activator( $root, $textdomain, $prefix );
+$deactivator  			  = new Deactivator( $root, $textdomain, $prefix );
+$uninstaller  			  = new Uninstaller( $root, $textdomain, $prefix );
+$admin_assets_controller  = new AdminAssetsController( $root, $textdomain, $prefix );
+$public_assets_controller = new PublicAssetsController( $root, $textdomain, $prefix );
+$options                  = new Options( $root, $textdomain, $prefix );
 $main_controller          = new MainController(
+	$activator,
+	$deactivator,
+	$uninstaller,
 	$admin_assets_controller,
 	$public_assets_controller,
 	$options,
-	$activator,
-	$deactivator,
-	$plugin_root,
-	$plugin_textdomain,
-	$plugin_prefix
+	$root,
+	$textdomain,
+	$prefix
 );
 
 // Go!

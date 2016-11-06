@@ -14,14 +14,45 @@ namespace dtg\plugin_name;
 class Activator {
 
 	/**
+	 * Path to the root plugin file.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $root;
+
+	/**
+	 * Plugin text-domain.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $textdomain;
+
+	/**
+	 * Plugin prefix.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $prefix;
+
+	/**
 	 * Constructor.
+	 *
+	 * @param 	string $root 		Path to the root plugin file.
+	 * @param 	string $textdomain 	Plugin text-domain.
+	 * @param 	string $prefix 		Plugin prefix.
 	 *
 	 * @since		0.1.0
 	 */
-	public function __construct( $plugin_root, $plugin_textdomain, $plugin_prefix ) {
-		$this->plugin_root 		 = $plugin_root;
-		$this->plugin_textdomain = $plugin_textdomain;
-		$this->plugin_prefix     = $plugin_prefix;
+	public function __construct( $root, $textdomain, $prefix ) {
+		$this->plugin_root 		 = $root;
+		$this->plugin_textdomain = $textdomain;
+		$this->plugin_prefix     = $prefix;
 	}
 
 	/**
@@ -30,27 +61,8 @@ class Activator {
 	 * @since		0.1.0
 	 */
 	public function run() {
-		register_activation_hook( $this->plugin_root, array( $this, 'activation_notices' ), 10 );
-		register_activation_hook( $this->plugin_root, array( $this, 'activation_tasks' ), 10 );
-	}
-
-	/**
-	 * Display admin notices on plugin activation.
-	 *
-	 * @since		0.1.0
-	 */
-	public function activation_notices() {
 		add_action( 'admin_notices', array( $this, 'activation_admin_notice' ), 10 );
 		add_action( 'admin_init', array( $this, 'activation_admin_init' ), 10 );
-	}
-
-	/**
-	 * Carry out tasks on plugin activation.
-	 *
-	 * @since		0.1.0
-	 */
-	public function activation_tasks() {
-
 	}
 
 	/**
@@ -59,6 +71,7 @@ class Activator {
 	 * @since    0.1.0
 	 */
 	public function activation_admin_notice() {
+
 		// If we have notices.
 		if ( $notices = get_option( $this->plugin_prefix . '_deferred_admin_notices' ) ) {
 

@@ -14,14 +14,45 @@ namespace dtg\plugin_name;
 class AdminAssetsController {
 
 	/**
+	 * Path to the root plugin file.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $root;
+
+	/**
+	 * Plugin text-domain.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $textdomain;
+
+	/**
+	 * Plugin prefix.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $prefix;
+
+	/**
 	 * Constructor.
 	 *
-	 * @since    0.1.0
+	 * @param 	string $root 		Path to the root plugin file.
+	 * @param 	string $textdomain 	Plugin text-domain.
+	 * @param 	string $prefix 		Plugin prefix.
+	 *
+	 * @since		0.1.0
 	 */
-	public function __construct( $plugin_root, $plugin_textdomain, $plugin_prefix ) {
-		$this->plugin_root 		 = $plugin_root;
-		$this->plugin_textdomain = $plugin_textdomain;
-		$this->plugin_prefix     = $plugin_prefix;
+	public function __construct( $root, $textdomain, $prefix ) {
+		$this->plugin_root 		 = $root;
+		$this->plugin_textdomain = $textdomain;
+		$this->plugin_prefix     = $prefix;
 	}
 
 	/**

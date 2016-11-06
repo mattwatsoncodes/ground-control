@@ -1,22 +1,53 @@
 <?php
-
 namespace dtg\plugin_name;
 
 /**
  * Class Options
+ *
  * @package dtg\plugin_name
  */
 class Options {
 
 	/**
-	 * Constructor.
+	 * Path to the root plugin file.
 	 *
+	 * @var 	string
+	 * @access	private
 	 * @since	0.1.0
 	 */
-	public function __construct( $plugin_root, $plugin_textdomain, $plugin_prefix ) {
-		$this->plugin_root 		 = $plugin_root;
-		$this->plugin_textdomain = $plugin_textdomain;
-		$this->plugin_prefix     = $plugin_prefix;
+	private $root;
+
+	/**
+	 * Plugin text-domain.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $textdomain;
+
+	/**
+	 * Plugin prefix.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $prefix;
+
+	/**
+	 * Constructor.
+	 *
+	 * @param 	string $root 		Path to the root plugin file.
+	 * @param 	string $textdomain 	Plugin text-domain.
+	 * @param 	string $prefix 		Plugin prefix.
+	 *
+	 * @since		0.1.0
+	 */
+	public function __construct( $root, $textdomain, $prefix ) {
+		$this->plugin_root 		 = $root;
+		$this->plugin_textdomain = $textdomain;
+		$this->plugin_prefix     = $prefix;
 	}
 
 	/**
@@ -41,10 +72,19 @@ class Options {
 		register_setting( $this->plugin_prefix . '_settings_group', $this->plugin_prefix . '_example_setting' );
 
 		// Add sections.
-		add_settings_section( $this->plugin_prefix . '_example_section', esc_html__( 'Example Section Heading', $this->plugin_textdomain ), array( $this, $this->plugin_prefix . '_example_section_cb' ), $this->plugin_prefix . '_settings' );
+		add_settings_section( $this->plugin_prefix . '_example_section',
+			esc_html__( 'Example Section Heading', $this->plugin_textdomain ),
+			array( $this, $this->plugin_prefix . '_example_section_cb' ),
+			$this->plugin_prefix . '_settings'
+		);
 
 		// Add fields to a section.
-		add_settings_field( $this->plugin_prefix . '_example_field', esc_html__( 'Example Field Label:', $this->plugin_textdomain ), array( $this, $this->plugin_prefix . '_example_field_cb' ), $this->plugin_prefix . '_settings', $this->plugin_prefix . '_example_section' );
+		add_settings_field( $this->plugin_prefix . '_example_field',
+			esc_html__( 'Example Field Label:', $this->plugin_textdomain ),
+			array( $this, $this->plugin_prefix . '_example_field_cb' ),
+			$this->plugin_prefix . '_settings',
+			$this->plugin_prefix . '_example_section'
+		);
 	}
 
 	/**
@@ -77,6 +117,7 @@ class Options {
 				</li>
 			</ul>
 		</div>
+
 		<?php
 	}
 
@@ -86,8 +127,6 @@ class Options {
 	 * @since	0.1.0
 	 */
 	public function add_options_page() {
-		// For WordPress this is options-general.php.
-		// For WooCommerce it is edit.php?post_type=shop_order.
 		add_submenu_page( 'options-general.php',
 			esc_html__( 'Example Settings', $this->plugin_textdomain ),
 			esc_html__( 'Plugin Name', $this->plugin_textdomain ),
@@ -119,12 +158,12 @@ class Options {
 	/**
 	 * Add 'Settings' action on installed plugin list.
 	 *
-	 * @param array $links An array of links.
+	 * @param array $links An array of plugin action links.
 	 *
 	 * @since	0.1.0
 	 */
 	function add_setings_link( $links ) {
-		array_unshift( $links, '<a href="options-general.php?page=plugin_name">' . esc_html__( 'Settings', $this->plugin_textdomain ) . '</a>' );
+		array_unshift( $links, '<a href="options-general.php?page=' . esc_attr( $this->plugin_prefix ) . '">' . esc_html__( 'Settings', $this->plugin_textdomain ) . '</a>' );
 
 		return $links;
 	}
