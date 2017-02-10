@@ -29,14 +29,14 @@ define( 'DTG_PLUGIN_NAME_TEXT_DOMAIN', 'plugin-name' );
 define( 'DTG_PLUGIN_NAME_PREFIX', 'plugin_name' );
 
 // Classes.
-require_once 'php/class.Helpers.php';
-require_once 'php/class.Activator.php';
-require_once 'php/class.Deactivator.php';
-require_once 'php/class.Uninstaller.php';
-require_once 'php/class.Assets_Controller.php';
-require_once 'php/class.Settings.php';
-require_once 'php/class.Customizer.php';
-require_once 'php/class.Main_Controller.php';
+require_once 'php/class-helpers.php';
+require_once 'php/class-activator.php';
+require_once 'php/class-deactivator.php';
+require_once 'php/class-uninstaller.php';
+require_once 'php/class-assets-controller.php';
+require_once 'php/class-settings.php';
+require_once 'php/class-customizer.php';
+require_once 'php/class-main-controller.php';
 
 // Namespaces.
 use dtg\plugin_name\Helpers;

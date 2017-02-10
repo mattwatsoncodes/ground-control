@@ -67,9 +67,6 @@ class Activator {
 	 */
 	public function run() {
 		register_activation_hook( $this->plugin_root, array( $this, 'activate' ) );
-
-		add_action( 'admin_init', array( $this, 'generate_notices' ), 10 );
-		add_action( 'admin_notices', array( $this, 'display_notices' ), 10 );
 	}
 
 	/**
@@ -80,6 +77,9 @@ class Activator {
 	public function activate() {
 		// Set a transient that we can use later.
 		set_transient( $this->plugin_prefix . '_activated', true, 5 );
+
+		add_action( 'admin_init', array( $this, 'generate_activation_notices' ), 10 );
+		add_action( 'admin_notices', array( $this, 'display_activation_notices' ), 10 );
 	}
 
 	/**
@@ -87,23 +87,23 @@ class Activator {
 	 *
 	 * @since	0.1.0
 	 */
-	public function display_notices() {
+	public function display_activation_notices() {
 
 		// Get the notices transients.
 		$activated = get_transient( $this->plugin_prefix . '_activated' );
-		$notices   = get_transient( $this->plugin_prefix . '_admin_notices' );
+		$notices   = get_transient( $this->plugin_prefix . '_activated_admin_notices' );
 
 		if ( ! empty( $activated ) && ! empty( $notices ) ) {
 
 			// Loop through the array and generate the notices.
 			foreach ( $notices as $notice ) {
-				echo '<div class="updated"><p>' . esc_html( $notice ) . '</p></div>';
+				echo '<div class="updated notice is-dismissible"><p>' . esc_html( $notice ) . '</p></div>';
 			}
 		}
 
 		// Delete the notices transients.
 		delete_transient( $this->plugin_prefix . '_activated' );
-		delete_transient( $this->plugin_prefix . '_admin_notices' );
+		delete_transient( $this->plugin_prefix . '_activated_admin_notices' );
 	}
 
 	/**
@@ -111,7 +111,7 @@ class Activator {
 	 *
 	 * @since	0.1.0
 	 */
-	public function generate_notices() {
+	public function generate_activation_notices() {
 
 		$notices = array();
 
@@ -121,6 +121,6 @@ class Activator {
 		$notices[] = $activation_notice;
 
 		// Add the notices to the transient.
-		set_transient( $this->plugin_prefix . '_admin_notices', $notices, 5 );
+		set_transient( $this->plugin_prefix . '_activated_admin_notices', $notices, 5 );
 	}
 }
