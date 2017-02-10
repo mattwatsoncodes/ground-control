@@ -72,7 +72,7 @@ class Customizer {
 		add_action( 'customize_register', array( $this, 'customizer_controls' ), 10 );
 
 		// Enqueue live preview JS handlers.
-		add_action( 'customize_preview_init', array( $this, 'customize_preview_js' ), 10 );
+		add_action( 'customize_preview_init', array( $this, 'customizer_preview_js' ), 10 );
 	}
 
 	/**
