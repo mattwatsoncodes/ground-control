@@ -1,6 +1,7 @@
 <?php
-
 /**
+ * Plugin Name
+ *
  * @link              https://github.com/davetgreen/plugin-name
  * @package           dtg\plugin-name
  *
@@ -16,44 +17,57 @@
  * Domain Path:       /languages
  */
 
-// If this file is called directly, abort.
+// Abort if this file is called directly.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
 // Constants.
 define( 'DTG_PLUGIN_NAME_ROOT', __FILE__ );
+define( 'DTG_PLUGIN_NAME_NAME', 'Plugin Name' );
 define( 'DTG_PLUGIN_NAME_TEXT_DOMAIN', 'plugin-name' );
+define( 'DTG_PLUGIN_NAME_PREFIX', 'plugin_name' );
 
 // Classes.
-require_once 'php/class.MainController.php';
-require_once 'php/class.Options.php';
-require_once 'php/class.AdminAssetsController.php';
-require_once 'php/class.PublicAssetsController.php';
-require_once 'php/class.ActivationController.php';
-require_once 'php/class.DeactivationController.php';
+require_once 'php/class.Helpers.php';
+require_once 'php/class.Activator.php';
+require_once 'php/class.Deactivator.php';
+require_once 'php/class.Uninstaller.php';
+require_once 'php/class.Admin_Assets_Controller.php';
+require_once 'php/class.Public_Assets_Controller.php';
+require_once 'php/class.Settings.php';
+require_once 'php/class.Customizer.php';
+require_once 'php/class.Main_Controller.php';
 
 // Namespaces.
-use dtg\plugin_name\MainController;
-use dtg\plugin_name\Options;
-use dtg\plugin_name\AdminAssetsController;
-use dtg\plugin_name\PublicAssetsController;
-use dtg\plugin_name\ActivationController;
-use dtg\plugin_name\DeactivationController;
+use dtg\plugin_name\Helpers;
+use dtg\plugin_name\Activator;
+use dtg\plugin_name\Deactivator;
+use dtg\plugin_name\Uninstaller;
+use dtg\plugin_name\Admin_Assets_Controller;
+use dtg\plugin_name\Public_Assets_Controller;
+use dtg\plugin_name\Settings;
+use dtg\plugin_name\Customizer;
+use dtg\plugin_name\Main_Controller;
 
-// Init.
-$options                  = new Options();
-$admin_assets_controller  = new AdminAssetsController();
-$public_assets_controller = new PublicAssetsController();
-$activation_controller    = new ActivationController();
-$deactivation_controller  = new DeactivationController();
-$main_controller          = new MainController(
-	$options,
+// Instances.
+$helpers				  = new Helpers();
+$activator    			  = new Activator();
+$deactivator  			  = new Deactivator();
+$uninstaller  			  = new Uninstaller();
+$admin_assets_controller  = new Admin_Assets_Controller();
+$public_assets_controller = new Public_Assets_Controller();
+$settings                 = new Settings();
+$customizer               = new Customizer();
+$main_controller          = new Main_Controller(
+	$activator,
+	$deactivator,
+	$uninstaller,
 	$admin_assets_controller,
 	$public_assets_controller,
-	$activation_controller,
-	$deactivation_controller
+	$settings,
+	$customizer
 );
 
-// Go!
+// Unleash Hell.
 $main_controller->run();
