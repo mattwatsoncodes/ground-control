@@ -4,6 +4,8 @@ namespace dtg\plugin_name;
 /**
  * Class Settings
  *
+ * @since	0.1.0
+ *
  * @package dtg\plugin_name
  */
 class Settings {
@@ -15,7 +17,16 @@ class Settings {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $root;
+	private $plugin_root;
+
+	/**
+	 * Plugin name.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $plugin_name;
 
 	/**
 	 * Plugin text-domain.
@@ -24,7 +35,7 @@ class Settings {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $textdomain;
+	private $plugin_textdomain;
 
 	/**
 	 * Plugin prefix.
@@ -33,12 +44,12 @@ class Settings {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $prefix;
+	private $plugin_prefix;
 
 	/**
 	 * Constructor.
 	 *
-	 * @since		0.1.0
+	 * @since	0.1.0
 	 */
 	public function __construct() {
 		$this->plugin_root 		 = DTG_PLUGIN_NAME_ROOT;

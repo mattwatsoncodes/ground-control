@@ -6,8 +6,7 @@ namespace dtg\plugin_name;
  *
  * Sets up the public and admin area JS and CSS needed for this plugin.
  *
- * @link		https://github.com/davetgreen/plugin-name
- * @since		0.1.0
+ * @since	0.1.0
  *
  * @package dtg\plugin_name
  */
@@ -20,7 +19,16 @@ class Assets_Controller {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $root;
+	private $plugin_root;
+
+	/**
+	 * Plugin name.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $plugin_name;
 
 	/**
 	 * Plugin text-domain.
@@ -29,7 +37,7 @@ class Assets_Controller {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $textdomain;
+	private $plugin_textdomain;
 
 	/**
 	 * Plugin prefix.
@@ -38,12 +46,12 @@ class Assets_Controller {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $prefix;
+	private $plugin_prefix;
 
 	/**
 	 * Constructor.
 	 *
-	 * @since		0.1.0
+	 * @since	0.1.0
 	 */
 	public function __construct() {
 		$this->plugin_root 		 = DTG_PLUGIN_NAME_ROOT;
@@ -55,7 +63,7 @@ class Assets_Controller {
 	/**
 	 * Unleash Hell.
 	 *
-	 * @since    0.1.0
+	 * @since	0.1.0
 	 */
 	public function run() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'public_enqueue_scripts' ), 10 );
@@ -65,34 +73,60 @@ class Assets_Controller {
 	/**
 	 * Enqueue Public Scripts.
 	 *
-	 * @since    0.1.0
+	 * @since	0.1.0
 	 */
 	public function public_enqueue_scripts() {
 
-		$public_css_url = plugins_url( 'css/public.css', $this->plugin_root );
+		$public_css_url  = plugins_url( 'css/public.css', $this->plugin_root );
 		$public_css_path = dirname( $this->plugin_root ) . '/css/public.css';
 
-		$public_js_url  = plugins_url( 'js/public.js', $this->plugin_root );
-		$public_js_path = dirname( $this->plugin_root ) . '/js/public.js';
+		wp_enqueue_style(
+			$this->plugin_textdomain . '-public-css',
+			$public_css_url,
+			array(),
+			filemtime( $public_css_path ),
+			true
+		);
 
-		wp_enqueue_style( $this->plugin_textdomain . '-public-css', $public_css_url, array(), filemtime( $public_css_path ), true );
-		wp_enqueue_script( $this->plugin_textdomain . '-public-js', $public_js_url,  array( 'jquery' ), filemtime( $public_js_path ), true );
+		$public_js_url   = plugins_url( 'js/public.js', $this->plugin_root );
+		$public_js_path  = dirname( $this->plugin_root ) . '/js/public.js';
+
+		wp_enqueue_script(
+			$this->plugin_textdomain . '-public-js',
+			$public_js_url,
+			array( 'jquery' ),
+			filemtime( $public_js_path ),
+			true
+		);
 	}
 
 	/**
 	 * Enqueue Admin Scripts.
 	 *
-	 * @since    0.1.0
+	 * @since	0.1.0
 	 */
 	public function admin_enqueue_scripts() {
 
 		$admin_css_url  = plugins_url( 'css/admin.css', $this->plugin_root );
 		$admin_css_path = dirname( $this->plugin_root ) . '/css/admin.css';
 
+		wp_enqueue_style(
+			$this->plugin_textdomain . '-public-css',
+			$admin_css_url,
+			array(),
+			filemtime( $admin_css_path ),
+			true
+		);
+
 		$admin_js_url   = plugins_url( 'js/admin.js', $this->plugin_root );
 		$admin_js_path  = dirname( $this->plugin_root ) . '/js/admin.js';
 
-		wp_enqueue_style( $this->plugin_textdomain . '-public-css', $admin_css_url, array(), filemtime( $admin_css_path ), true );
-		wp_enqueue_script( $this->plugin_textdomain . '-public-js', $admin_js_url,  array( 'jquery' ), filemtime( $admin_js_path ), true );
+		wp_enqueue_script(
+			$this->plugin_textdomain . '-public-js',
+			$admin_js_url,
+			array( 'jquery' ),
+			filemtime( $admin_js_path ),
+			true
+		);
 	}
 }

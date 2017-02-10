@@ -15,7 +15,6 @@ namespace dtg\plugin_name;
  * - Repeat with other user roles. Best directly by using the links/query string parameters.
  * - Repeat things for multisite. Once for a single site in the network, once sitewide.
  *
- * @link		https://github.com/davetgreen/plugin-name
  * @since		0.1.0
  *
  * @package dtg\plugin_name
@@ -29,7 +28,16 @@ class Uninstaller {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $root;
+	private $plugin_root;
+
+	/**
+	 * Plugin name.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $plugin_name;
 
 	/**
 	 * Plugin text-domain.
@@ -38,7 +46,7 @@ class Uninstaller {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $textdomain;
+	private $plugin_textdomain;
 
 	/**
 	 * Plugin prefix.
@@ -47,7 +55,7 @@ class Uninstaller {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $prefix;
+	private $plugin_prefix;
 
 	/**
 	 * Constructor.

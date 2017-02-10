@@ -6,7 +6,6 @@ namespace dtg\plugin_name;
  *
  * Carry out actions when the plugin is deactivated.
  *
- * @link		https://github.com/davetgreen/plugin-name
  * @since		0.1.0
  *
  * @package dtg\plugin_name
@@ -20,7 +19,16 @@ class Deactivator {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $root;
+	private $plugin_root;
+
+	/**
+	 * Plugin name.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $plugin_name;
 
 	/**
 	 * Plugin text-domain.
@@ -29,7 +37,7 @@ class Deactivator {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $textdomain;
+	private $plugin_textdomain;
 
 	/**
 	 * Plugin prefix.
@@ -38,12 +46,12 @@ class Deactivator {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $prefix;
+	private $plugin_prefix;
 
 	/**
 	 * Constructor.
 	 *
-	 * @since		0.1.0
+	 * @since	0.1.0
 	 */
 	public function __construct() {
 		$this->plugin_root 		 = DTG_PLUGIN_NAME_ROOT;
@@ -55,7 +63,7 @@ class Deactivator {
 	/**
 	 * Unleash Hell.
 	 *
-	 * @since		0.1.0
+	 * @since	0.1.0
 	 */
 	public function run() {
 		add_action( 'admin_notices', array( $this, 'deactivation_admin_notice' ), 10 );
@@ -65,7 +73,7 @@ class Deactivator {
 	/**
 	 * Output notices on plugin deactivation.
 	 *
-	 * @since    0.1.0
+	 * @since	0.1.0
 	 */
 	public function deactivation_admin_notice() {
 
@@ -85,7 +93,7 @@ class Deactivator {
 	/**
 	 * Add an deactivation notice if we haven't already displayed one.
 	 *
-	 * @since    0.1.0
+	 * @since	0.1.0
 	 */
 	public function deactivation_admin_init() {
 
@@ -103,7 +111,7 @@ class Deactivator {
 	/**
 	 * Add an admin notice to the output.
 	 *
-	 * @since    0.1.0
+	 * @since	0.1.0
 	 */
 	public function deactivation_add_notice() {
 

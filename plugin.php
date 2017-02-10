@@ -22,13 +22,13 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Constants.
+// Define Constants.
 define( 'DTG_PLUGIN_NAME_ROOT', __FILE__ );
 define( 'DTG_PLUGIN_NAME_NAME', 'Plugin Name' );
 define( 'DTG_PLUGIN_NAME_TEXT_DOMAIN', 'plugin-name' );
 define( 'DTG_PLUGIN_NAME_PREFIX', 'plugin_name' );
 
-// Classes.
+// Include Classes.
 require_once 'php/class.Helpers.php';
 require_once 'php/class.Activator.php';
 require_once 'php/class.Deactivator.php';
@@ -38,7 +38,7 @@ require_once 'php/class.Settings.php';
 require_once 'php/class.Customizer.php';
 require_once 'php/class.Main_Controller.php';
 
-// Namespaces.
+// Define Namespaces.
 use dtg\plugin_name\Helpers;
 use dtg\plugin_name\Activator;
 use dtg\plugin_name\Deactivator;
@@ -48,7 +48,7 @@ use dtg\plugin_name\Settings;
 use dtg\plugin_name\Customizer;
 use dtg\plugin_name\Main_Controller;
 
-// Instances.
+// Create Instances.
 $helpers				  = new Helpers();
 $activator    			  = new Activator();
 $deactivator  			  = new Deactivator();

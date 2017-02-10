@@ -6,7 +6,9 @@ namespace dtg\plugin_name;
  *
  * Helper class containing useful static methods.
  *
- * @package dtg\plugin-name
+ * @since	0.1.0
+ *
+ * @package dtg\plugin_name
  */
 
 /**
@@ -16,8 +18,11 @@ class Helpers {
 
 	/**
 	 * Constructor
+	 *
+	 * @since	0.1.0
 	 */
 	function __construct() {
+
 	}
 
 }
