@@ -129,8 +129,8 @@ class Main_Controller {
 		$this->customizer			= $customizer;
 		$this->plugin_root 		 	= DTG_PLUGIN_NAME_ROOT;
 		$this->plugin_name		 	= DTG_PLUGIN_NAME_NAME;
-		$this->plugin_textdomain	= DTG_PLUGIN_NAME_PREFIX;
-		$this->plugin_prefix		= DTG_PLUGIN_NAME_TEXT_DOMAIN;
+		$this->plugin_textdomain 	= DTG_PLUGIN_NAME_TEXT_DOMAIN;
+		$this->plugin_prefix     	= DTG_PLUGIN_NAME_PREFIX;
 	}
 
 	/**

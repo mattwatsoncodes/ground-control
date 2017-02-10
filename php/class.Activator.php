@@ -56,8 +56,8 @@ class Activator {
 	public function __construct() {
 		$this->plugin_root 		 = DTG_PLUGIN_NAME_ROOT;
 		$this->plugin_name		 = DTG_PLUGIN_NAME_NAME;
-		$this->plugin_textdomain = DTG_PLUGIN_NAME_PREFIX;
-		$this->plugin_prefix     = DTG_PLUGIN_NAME_TEXT_DOMAIN;
+		$this->plugin_textdomain = DTG_PLUGIN_NAME_TEXT_DOMAIN;
+		$this->plugin_prefix     = DTG_PLUGIN_NAME_PREFIX;
 	}
 
 	/**
@@ -66,66 +66,61 @@ class Activator {
 	 * @since	0.1.0
 	 */
 	public function run() {
-		add_action( 'admin_notices', array( $this, 'activation_admin_notice' ), 10 );
-		add_action( 'admin_init', array( $this, 'activation_admin_init' ), 10 );
+		register_activation_hook( $this->plugin_root, array( $this, 'activate' ) );
+
+		add_action( 'admin_init', array( $this, 'generate_notices' ), 10 );
+		add_action( 'admin_notices', array( $this, 'display_notices' ), 10 );
 	}
 
 	/**
-	 * Output notices on plugin activation.
+	 * Activate the plugin.
 	 *
 	 * @since	0.1.0
 	 */
-	public function activation_admin_notice() {
+	public function activate() {
+		// Set a transient that we can use later.
+		set_transient( $this->plugin_prefix . '_activated', true, 5 );
+	}
 
-		// If we have notices.
-		if ( $notices = get_option( $this->plugin_prefix . '_deferred_admin_notices' ) ) {
+	/**
+	 * Display admin notices on plugin activation.
+	 *
+	 * @since	0.1.0
+	 */
+	public function display_notices() {
+
+		// Get the notices transients.
+		$activated = get_transient( $this->plugin_prefix . '_activated' );
+		$notices   = get_transient( $this->plugin_prefix . '_admin_notices' );
+
+		if ( ! empty( $activated ) && ! empty( $notices ) ) {
 
 			// Loop through the array and generate the notices.
 			foreach ( $notices as $notice ) {
 				echo '<div class="updated"><p>' . esc_html( $notice ) . '</p></div>';
 			}
-
-			// Clear out our notices option.
-			delete_option( $this->plugin_prefix . '_deferred_admin_notices' );
 		}
+
+		// Delete the notices transients.
+		delete_transient( $this->plugin_prefix . '_activated' );
+		delete_transient( $this->plugin_prefix . '_admin_notices' );
 	}
 
 	/**
-	 * Add an activation notice if we haven't already displayed one.
+	 * Create admin notices ready for display.
 	 *
 	 * @since	0.1.0
 	 */
-	public function activation_admin_init() {
+	public function generate_notices() {
 
-		// Ensure the notice is shown only once.
-		if ( 1 != get_option( $this->plugin_prefix . '_activation_notice' ) ) {
+		$notices = array();
 
-			// Save the fact the plugin is active in an option.
-			add_option( $this->plugin_prefix . '_activation_notice', 1 );
-
-			// Add our activation notice.
-			$this->activation_add_notice();
-		}
-	}
-
-	/**
-	 * Add an admin notice to the output.
-	 *
-	 * @since	0.1.0
-	 */
-	public function activation_add_notice() {
-
-		// Retrieve any existing notices.
-		$notices = get_option( $this->plugin_prefix . '_deferred_admin_notices', array() );
-
-		// Prepare our notice.
+		// Add an Activation notice.
 		$activation_text   = __( sprintf( '%s has been successfully activated.', $this->plugin_name ), $this->plugin_textdomain );
 		$activation_notice = apply_filters( $this->plugin_prefix . '_activation_notice', $activation_text );
-
-		// Add our activation notice to the array.
 		$notices[] = $activation_notice;
 
-		// Update the notices setting including our notice.
-		update_option( $this->plugin_prefix . '_deferred_admin_notices', $notices );
+		// Add the notices to the transient.
+		set_transient( $this->plugin_prefix . '_admin_notices', $notices, 5 );
 	}
 }
