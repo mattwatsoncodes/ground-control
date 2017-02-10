@@ -6,7 +6,6 @@ namespace dtg\plugin_name;
  *
  * Register Customizer settings, panels, section and controls.
  *
- * @link		https://github.com/davetgreen/plugin-name
  * @since		0.1.0
  *
  * @package dtg\plugin_name
@@ -20,7 +19,16 @@ class Customizer {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $root;
+	private $plugin_root;
+
+	/**
+	 * Plugin name.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $plugin_name;
 
 	/**
 	 * Plugin text-domain.
@@ -29,7 +37,7 @@ class Customizer {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $textdomain;
+	private $plugin_textdomain;
 
 	/**
 	 * Plugin prefix.
@@ -38,12 +46,12 @@ class Customizer {
 	 * @access	private
 	 * @since	0.1.0
 	 */
-	private $prefix;
+	private $plugin_prefix;
 
 	/**
 	 * Constructor.
 	 *
-	 * @since		0.1.0
+	 * @since	0.1.0
 	 */
 	public function __construct() {
 		$this->plugin_root 		 = DTG_PLUGIN_NAME_ROOT;
@@ -55,7 +63,7 @@ class Customizer {
 	/**
 	 * Unleash Hell.
 	 *
-	 * @since		0.1.0
+	 * @since	0.1.0
 	 */
 	public function run() {
 		// Handle Settings, Panels, Sections and Controls.
@@ -63,16 +71,16 @@ class Customizer {
 		add_action( 'customize_register', array( $this, 'customizer_sections' ), 10 );
 		add_action( 'customize_register', array( $this, 'customizer_controls' ), 10 );
 
-		// Enqueue JS assets.
+		// Enqueue live preview JS handlers.
 		add_action( 'customize_preview_init', array( $this, 'courtauld_customize_preview_js' ), 10 );
 	}
 
 	/**
 	 * Register Customizer settings.
 	 *
-	 * @param	WP_Customize $wp_customize WP Customize object.
+	 * @param	WP_Customize $wp_customize WordPress Customizer object.
 	 *
-	 * @since    0.1.0
+	 * @since	0.1.0
 	 */
 	public function customizer_settings( $wp_customize ) {
 
@@ -81,9 +89,9 @@ class Customizer {
 	/**
 	 * Register Customizer panels and sections.
 	 *
-	 * @param	WP_Customize $wp_customize WP Customize object.
+	 * @param	WP_Customize $wp_customize WordPress Customizer object.
 	 *
-	 * @since    0.1.0
+	 * @since	0.1.0
 	 */
 	public function customizer_sections( $wp_customize ) {
 
@@ -92,9 +100,9 @@ class Customizer {
 	/**
 	 * Register Customizer controls.
 	 *
-	 * @param	WP_Customize $wp_customize WP Customize object.
+	 * @param	WP_Customize $wp_customize WordPress Customizer object.
 	 *
-	 * @since    0.1.0
+	 * @since	0.1.0
 	 */
 	public function customizer_controls( $wp_customize ) {
 
@@ -102,9 +110,13 @@ class Customizer {
 
 	/**
 	 * Enqueue live preview JS handlers.
+	 *
+	 * @since	0.1.0
 	 */
 	function customizer_preview_js() {
-		$customizer_js_url = plugins_url( 'js/customizer.js', $this->plugin_root );
-		wp_enqueue_script( $this->plugin_textdomain . '-customizer', $customizer_js_url, array( 'customize-preview' ), filemtime( $customizer_js_url ), true );
+		$customizer_js_url  = plugins_url( 'js/customizer.js', $this->plugin_root );
+		$customizer_js_path = dirname( $this->plugin_root ) . '/js/customizer.js';
+
+		wp_enqueue_script( $this->plugin_textdomain . '-customizer', $customizer_js_url, array( 'customize-preview' ), filemtime( $customizer_js_path ), true );
 	}
 }
