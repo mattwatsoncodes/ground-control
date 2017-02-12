@@ -92,7 +92,7 @@ class Deactivator {
 	public function generate_deactivation_notices() {
 
 		// Check for the activation transient.
-		if ( get_transient( $this->plugin_prefix . '_deactivated' ) ) {
+		if ( ! empty( get_transient( $this->plugin_prefix . '_deactivated' ) ) ) {
 
 			$notices = array();
 

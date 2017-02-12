@@ -92,7 +92,7 @@ class Activator {
 	public function generate_activation_notices() {
 
 		// Check for the activation transient.
-		if ( get_transient( $this->plugin_prefix . '_activated' ) ) {
+		if ( ! empty( get_transient( $this->plugin_prefix . '_activated' ) ) ) {
 
 			$notices = array();
 
