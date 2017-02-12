@@ -96,7 +96,7 @@ class Activator {
 
 			$notices = array();
 
-			// Add an Activation notice.
+			// Add a activation notice.
 			$activation_text   = __( sprintf( '%s has been successfully activated.', $this->plugin_name ), $this->plugin_textdomain );
 			$activation_notice = apply_filters( $this->plugin_prefix . '_activation_notice', $activation_text );
 			$notices[]		   = $activation_notice;
