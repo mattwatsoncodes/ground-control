@@ -94,15 +94,15 @@ class Activator {
 		// Check for the activation transient.
 		if ( ! empty( get_transient( $this->plugin_prefix . '_activated' ) ) ) {
 
-			$notices = array();
+			$activation_notices = array();
 
 			// Add a activation notice.
-			$activation_text   = __( sprintf( '%s has been successfully activated.', $this->plugin_name ), $this->plugin_textdomain );
-			$activation_notice = apply_filters( $this->plugin_prefix . '_activation_notice', $activation_text );
-			$notices[]		   = $activation_notice;
+			$activation_text      = __( sprintf( '%s has been successfully activated.', $this->plugin_name ), $this->plugin_textdomain );
+			$activation_notice    = apply_filters( $this->plugin_prefix . '_activation_notice', $activation_text );
+			$activation_notices[] = $activation_notice;
 
 			// Add the notices to the transient.
-			set_transient( $this->plugin_prefix . '_activation_notices', $notices, 10 );
+			set_transient( $this->plugin_prefix . '_activation_notices', $activation_notices, 10 );
 		}
 	}
 
@@ -117,12 +117,12 @@ class Activator {
 		if ( ! empty( get_transient( $this->plugin_prefix . '_activated' ) ) ) {
 
 			// Get any notices from the transient.
-			$notices = get_transient( $this->plugin_prefix . '_activation_notices' );
+			$activation_notices = get_transient( $this->plugin_prefix . '_activation_notices' );
 
-			if ( ! empty( $notices ) ) {
+			if ( ! empty( $activation_notices ) ) {
 
 				// Loop through the array and generate the notices.
-				foreach ( $notices as $notice ) {
+				foreach ( $activation_notices as $notice ) {
 					echo '<div class="updated notice is-dismissible"><p>' . esc_html( $notice ) . '</p></div>';
 				}
 			}
