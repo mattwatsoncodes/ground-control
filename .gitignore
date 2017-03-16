@@ -1,6 +1,34 @@
-# Git Ignore for Plugin
+# Git Ignore for Ground Control.
 # -----------------------------------------------------------------------------
 
-# OS Ignores
+# Flotsam & Jetsam.
 # -------------------------------------
 .DS_Store
+
+# Nested Git files.
+# -------------------------------------
+build/**/.git
+build/**/.gitignore
+build/**/.gitmodules
+
+# Assets.
+# -------------------------------------
+assets/css/*
+!assets/css/.gitkeep
+assets/js/lib/modernizr-custom.js
+
+# Composer.
+# -------------------------------------
+composer.lock
+
+# Dependencies.
+# -------------------------------------
+bower_components
+node_modules
+
+# Documentation & Reports.
+# -------------------------------------
+docs/*
+!docs/.gitkeep
+reports/*
+!reports/.gitkeep

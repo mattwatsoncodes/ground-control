@@ -114,7 +114,7 @@ echo "Pushing git master to origin, with tags"
 git push origin master
 git push origin master --tags
 
-if [ "$PROCEED" != "y" ] then echo "GitHub deploy complete, now aborting before we do the SVN deploy."; exit 1; fi
+if [ "$PROCEED" != "y" ]; then echo "GitHub deploy complete, now aborting before we do the SVN deploy."; exit 1; fi
 
 echo
 echo "Creating local copy of SVN repo trunk ..."
@@ -152,7 +152,7 @@ fi
 echo "Moving assets"
 # Make the directory if it doesn't already exist
 mkdir -p $SVNPATH/assets/
-mv $SVNPATH/trunk/assets/* $SVNPATH/assets/
+mv $SVNPATH/trunk/assets/repository-assets/* $SVNPATH/assets/
 svn add --force $SVNPATH/assets/
 svn delete --force $SVNPATH/trunk/assets
 # We dont want all of our toys in the SVN repo, so lets remove them:
@@ -167,6 +167,7 @@ svn delete --force $SVNPATH/trunk/grunt
 svn delete --force $SVNPATH/trunk/node_modules
 svn delete --force $SVNPATH/trunk/bower_components
 svn delete --force $SVNPATH/trunk/docs
+svn delete --force $SVNPATH/trunk/reports
 
 echo "Changing directory to SVN and committing to trunk"
 cd $SVNPATH/trunk/
