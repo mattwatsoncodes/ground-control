@@ -27,28 +27,29 @@ define( 'MKDO_GROUND_CONTROL_ROOT', __FILE__ );
 define( 'MKDO_GROUND_CONTROL_NAME', 'Ground Control' );
 define( 'MKDO_GROUND_CONTROL_PREFIX', 'mkdo_ground_control' );
 
-// Classes.
+// Classes
+//
+// Create your own, or make copies of those in the examples folder to get you
+// started.
 require_once 'php/class-helper.php';
-require_once 'php/class-activator.php';
-require_once 'php/class-deactivator.php';
-require_once 'php/class-uninstaller.php';
 require_once 'php/class-settings.php';
 require_once 'php/class-controller-assets.php';
 require_once 'php/class-controller-main.php';
 
-// Namespaces.
+// Namespaces
+//
+// Add references for each class here. If you add new classes be sure to include
+// the namespace.
 use mkdo\ground_control\Helper;
-use mkdo\ground_control\Activator;
-use mkdo\ground_control\Deactivator;
-use mkdo\ground_control\Uninstaller;
 use mkdo\ground_control\Settings;
 use mkdo\ground_control\Controller_Assets;
 use mkdo\ground_control\Controller_Main;
 
 // Instances
 //
-// Optionally we can pass in the Activator, Deactivator and uninstaller, however
-// not every plugin needs these, so commenting out for now.
+// Optionally we can pass in the Activator, Deactivator and Uninstaller, however
+// not every plugin needs these, so commenting out for now, and putting them into
+// the examples folder.
 //
 // $activator    			  = new Activator();
 // $deactivator  			  = new Deactivator();

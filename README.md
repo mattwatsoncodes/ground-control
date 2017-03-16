@@ -2,6 +2,23 @@
 
 A brief description of the plugin.
 
+## [Useage](#useage)
+
+This plugin framework has been specifically configured for use by [Matt Watson](https://github.com/mwtsn/). Please fork this for your own plugin and make
+sure you do a find and replace for all the variables that make this thing yours.
+
+Here are what to look for, and the defaults that are set (for you to find and replace):
+
+- Plugin Name: `Ground Control`
+- Contributors: `mwtsn, davetgreen, mkdo`
+- Plugin Slug: `ground-control`
+- Plugin Prefix: `mkdo_ground_control`
+- Plugin URI: `https://github.com/mkdo/ground-control`
+- Author: `Make Do <hello@makedo.net>`
+- Author URL: `https://makedo.net`
+- Constants Prefix: `MKDO_GROUND_CONTROL`
+- SVN Username: `mwtsn`
+
 ## [About](#about)
 
 A more in depth description of the plugin.
@@ -10,6 +27,14 @@ The plugin provides the following functionality:
 
 - Example functionality
 - etc...
+
+## [Deploying](#deploying)
+This plugin framework contains a deployment script that will tag your build in GitHub
+and deploy to the WordPress SVN.
+
+To use this you will need to make the script executable via the command line using `chmod a+x deploy.sh`, and run it using `./deploy.sh`.
+
+You will be asked to confirm your GitHub and SVN repositories.
 
 ## [More Information](#more-information)
 You can find out more about the plugin, including the changelog in the [`readme.text` file](https://github.com/mwtsn/ground-control/blob/master/readme.txt), which the WordPress repository uses to display information about the plugin.
