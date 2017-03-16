@@ -1,6 +1,6 @@
 ( function( $ ) {
 	'use strict';
 
-	// Customizer live preview handlers.
+	// Javascript.
 
 } )( jQuery );

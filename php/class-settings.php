@@ -1,62 +1,25 @@
 <?php
-namespace dtg\plugin_name;
-
 /**
  * Class Settings
  *
  * @since	0.1.0
  *
- * @package dtg\plugin_name
+ * @package mkdo\ground_control
+ */
+
+namespace mkdo\ground_control;
+
+/**
+ * The main plugin settings page
  */
 class Settings {
-
-	/**
-	 * Path to the root plugin file.
-	 *
-	 * @var 	string
-	 * @access	private
-	 * @since	0.1.0
-	 */
-	private $plugin_root;
-
-	/**
-	 * Plugin name.
-	 *
-	 * @var 	string
-	 * @access	private
-	 * @since	0.1.0
-	 */
-	private $plugin_name;
-
-	/**
-	 * Plugin text-domain.
-	 *
-	 * @var 	string
-	 * @access	private
-	 * @since	0.1.0
-	 */
-	private $plugin_textdomain;
-
-	/**
-	 * Plugin prefix.
-	 *
-	 * @var 	string
-	 * @access	private
-	 * @since	0.1.0
-	 */
-	private $plugin_prefix;
 
 	/**
 	 * Constructor.
 	 *
 	 * @since	0.1.0
 	 */
-	public function __construct() {
-		$this->plugin_root 		 = DTG_PLUGIN_NAME_ROOT;
-		$this->plugin_name		 = DTG_PLUGIN_NAME_NAME;
-		$this->plugin_textdomain = DTG_PLUGIN_NAME_TEXT_DOMAIN;
-		$this->plugin_prefix     = DTG_PLUGIN_NAME_PREFIX;
-	}
+	public function __construct() {}
 
 	/**
 	 * Do Work
@@ -66,7 +29,7 @@ class Settings {
 	public function run() {
 		add_action( 'admin_init', array( $this, 'init_settings_page' ) );
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
-		add_action( 'plugin_action_links_' . plugin_basename( $this->plugin_root ) , array( $this, 'add_setings_link' ) );
+		add_action( 'plugin_action_links_' . plugin_basename( MKDO_GROUND_CONTROL_ROOT ) , array( $this, 'add_setings_link' ) );
 	}
 
 	/**
@@ -77,21 +40,21 @@ class Settings {
 	public function init_settings_page() {
 
 		// Register settings.
-		register_setting( $this->plugin_prefix . '_settings_group', $this->plugin_prefix . '_example_setting' );
+		register_setting( MKDO_GROUND_CONTROL_PREFIX . '_settings_group', MKDO_GROUND_CONTROL_PREFIX . '_example_setting' );
 
 		// Add sections.
-		add_settings_section( $this->plugin_prefix . '_example_section',
-			esc_html__( 'Example Section Heading', $this->plugin_textdomain ),
-			array( $this, $this->plugin_prefix . '_example_section_cb' ),
-			$this->plugin_prefix . '_settings'
+		add_settings_section( MKDO_GROUND_CONTROL_PREFIX . '_example_section',
+			esc_html__( 'Example Section Heading', 'ground-control' ),
+			array( $this, MKDO_GROUND_CONTROL_PREFIX . '_example_section_cb' ),
+			MKDO_GROUND_CONTROL_PREFIX . '_settings'
 		);
 
 		// Add fields to a section.
-		add_settings_field( $this->plugin_prefix . '_example_field',
-			esc_html__( 'Example Field Label:', $this->plugin_textdomain ),
-			array( $this, $this->plugin_prefix . '_example_field_cb' ),
-			$this->plugin_prefix . '_settings',
-			$this->plugin_prefix . '_example_section'
+		add_settings_field( MKDO_GROUND_CONTROL_PREFIX . '_example_field',
+			esc_html__( 'Example Field Label:', 'ground-control' ),
+			array( $this, MKDO_GROUND_CONTROL_PREFIX . '_example_field_cb' ),
+			MKDO_GROUND_CONTROL_PREFIX . '_settings',
+			MKDO_GROUND_CONTROL_PREFIX . '_example_section'
 		);
 	}
 
@@ -100,8 +63,8 @@ class Settings {
 	 *
 	 * @since	0.1.0
 	 */
-	public function plugin_name_example_section_cb() {
-		echo '<p>' . esc_html( 'Example description for this section.', $this->plugin_textdomain ) . '</p>';
+	public function ground_control_example_section_cb() {
+		echo '<p>' . esc_html( 'Example description for this section.', 'ground-control' ) . '</p>';
 	}
 
 	/**
@@ -109,18 +72,18 @@ class Settings {
 	 *
 	 * @since	0.1.0
 	 */
-	public function plugin_name_example_field_cb() {
-		$example_option = get_option( $this->plugin_prefix . '_example_option', 'Default text...' );
+	public function ground_control_example_field_cb() {
+		$example_option = get_option( MKDO_GROUND_CONTROL_PREFIX . '_example_option', 'Default text...' );
 		?>
 
 		<div class="field field-example">
 			<p class="field-description">
-				<?php esc_html_e( 'This is an example field.', $this->plugin_textdomain );?>
+				<?php esc_html_e( 'This is an example field.', 'ground-control' );?>
 			</p>
 			<ul class="field-input">
 				<li>
 					<label>
-						<input type="text" name="<?php echo esc_attr( $this->plugin_prefix . '_example_field' ); ?>" value="<?php echo esc_attr( $example_option ); ?>" />
+						<input type="text" name="<?php echo esc_attr( MKDO_GROUND_CONTROL_PREFIX . '_example_field' ); ?>" value="<?php echo esc_attr( $example_option ); ?>" />
 					</label>
 				</li>
 			</ul>
@@ -135,11 +98,11 @@ class Settings {
 	 * @since	0.1.0
 	 */
 	public function add_settings_page() {
-		add_submenu_page( 'settings-general.php',
-			esc_html__( 'Example Settings', $this->plugin_textdomain ),
-			esc_html__( 'Plugin Name', $this->plugin_textdomain ),
-			'manage_settings',
-			$this->plugin_prefix,
+		add_submenu_page( 'options-general.php',
+			esc_html__( 'Ground Control', 'ground-control' ),
+			esc_html__( 'Ground Control', 'ground-control' ),
+			'manage_options',
+			MKDO_GROUND_CONTROL_PREFIX,
 			array( $this, 'render_settings_page' )
 		);
 	}
@@ -152,11 +115,11 @@ class Settings {
 	public function render_settings_page() {
 		?>
 		<div class="wrap">
-			<h2><?php esc_html_e( 'Plugin Name', $this->plugin_textdomain );?></h2>
+			<h2><?php esc_html_e( 'Ground Control', 'ground-control' );?></h2>
 
 			<form action="settings.php" method="POST">
-				<?php settings_fields( $this->plugin_prefix . '_settings_group' ); ?>
-				<?php do_settings_sections( $this->plugin_prefix . '_settings' ); ?>
+				<?php settings_fields( MKDO_GROUND_CONTROL_PREFIX . '_settings_group' ); ?>
+				<?php do_settings_sections( MKDO_GROUND_CONTROL_PREFIX . '_settings' ); ?>
 				<?php submit_button(); ?>
 			</form>
 		</div>
@@ -171,7 +134,7 @@ class Settings {
 	 * @since	0.1.0
 	 */
 	function add_setings_link( $links ) {
-		array_unshift( $links, '<a href="settings-general.php?page=' . esc_attr( $this->plugin_prefix ) . '">' . esc_html__( 'Settings', $this->plugin_textdomain ) . '</a>' );
+		array_unshift( $links, '<a href="options-general.php?page=' . esc_attr( MKDO_GROUND_CONTROL_PREFIX ) . '">' . esc_html__( 'Settings', 'ground-control' ) . '</a>' );
 
 		return $links;
 	}

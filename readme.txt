@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Ground Control ===
 Contributors: davetgreen
 Donate Link:
 Tags: 
@@ -19,7 +19,7 @@ The plugin provides the following functionality:
 - Example functionality
 - etc...
 
-If you are using this plugin in your project [I would love to hear about it](mailto:hello@davetgreen.me).
+If you are using this plugin in your project [I would love to hear about it](mailto:hello@makedo.net).
 
 == Installation ==
 

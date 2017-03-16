@@ -1,64 +1,25 @@
 <?php
-namespace dtg\plugin_name;
-
 /**
  * Class Activator
  *
- * Carry out actions when the plugin is activated.
- *
  * @since	0.1.0
  *
- * @package dtg\plugin_name
+ * @package mkdo\ground_control
+ */
+
+namespace mkdo\ground_control;
+
+/**
+ * Carry out actions when the plugin is activated.
  */
 class Activator {
-
-	/**
-	 * Path to the root plugin file.
-	 *
-	 * @var 	string
-	 * @access	private
-	 * @since	0.1.0
-	 */
-	private $plugin_root;
-
-	/**
-	 * Plugin name.
-	 *
-	 * @var 	string
-	 * @access	private
-	 * @since	0.1.0
-	 */
-	private $plugin_name;
-
-	/**
-	 * Plugin text-domain.
-	 *
-	 * @var 	string
-	 * @access	private
-	 * @since	0.1.0
-	 */
-	private $plugin_textdomain;
-
-	/**
-	 * Plugin prefix.
-	 *
-	 * @var 	string
-	 * @access	private
-	 * @since	0.1.0
-	 */
-	private $plugin_prefix;
 
 	/**
 	 * Constructor.
 	 *
 	 * @since	0.1.0
 	 */
-	public function __construct() {
-		$this->plugin_root 		 = DTG_PLUGIN_NAME_ROOT;
-		$this->plugin_name		 = DTG_PLUGIN_NAME_NAME;
-		$this->plugin_textdomain = DTG_PLUGIN_NAME_TEXT_DOMAIN;
-		$this->plugin_prefix     = DTG_PLUGIN_NAME_PREFIX;
-	}
+	public function __construct() {}
 
 	/**
 	 * Unleash Hell.
@@ -67,7 +28,7 @@ class Activator {
 	 */
 	public function run() {
 		// Register the activation callback.
-		register_activation_hook( $this->plugin_root, array( $this, 'activate' ) );
+		register_activation_hook( MKDO_GROUND_CONTROL_ROOT, array( $this, 'activate' ) );
 
 		// Hook in specific functionality such as adding notices etc.
 		add_action( 'admin_init', array( $this, 'generate_activation_notices' ), 10 );
@@ -81,7 +42,7 @@ class Activator {
 	 */
 	public function activate() {
 		// Set a transient to confirm activation.
-		set_transient( $this->plugin_prefix . '_activated', true, 10 );
+		set_transient( MKDO_GROUND_CONTROL_PREFIX . '_activated', true, 10 );
 	}
 
 	/**
@@ -92,17 +53,17 @@ class Activator {
 	public function generate_activation_notices() {
 
 		// Check for the activation transient.
-		if ( ! empty( get_transient( $this->plugin_prefix . '_activated' ) ) ) {
+		if ( ! empty( get_transient( MKDO_GROUND_CONTROL_PREFIX . '_activated' ) ) ) {
 
 			$activation_notices = array();
 
 			// Add a activation notice.
-			$activation_text      = __( sprintf( '%s has been successfully activated.', $this->plugin_name ), $this->plugin_textdomain );
-			$activation_notice    = apply_filters( $this->plugin_prefix . '_activation_notice', $activation_text );
+			$activation_text      = __( sprintf( '%s has been successfully activated.', MKDO_GROUND_CONTROL_NAME ), 'ground-control' );
+			$activation_notice    = apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_activation_notice', $activation_text );
 			$activation_notices[] = $activation_notice;
 
 			// Add the notices to the transient.
-			set_transient( $this->plugin_prefix . '_activation_notices', $activation_notices, 10 );
+			set_transient( MKDO_GROUND_CONTROL_PREFIX . '_activation_notices', $activation_notices, 10 );
 		}
 	}
 
@@ -114,10 +75,10 @@ class Activator {
 	public function display_activation_notices() {
 
 		// Check for the activation transient.
-		if ( ! empty( get_transient( $this->plugin_prefix . '_activated' ) ) ) {
+		if ( ! empty( get_transient( MKDO_GROUND_CONTROL_PREFIX . '_activated' ) ) ) {
 
 			// Get any notices from the transient.
-			$activation_notices = get_transient( $this->plugin_prefix . '_activation_notices' );
+			$activation_notices = get_transient( MKDO_GROUND_CONTROL_PREFIX . '_activation_notices' );
 
 			if ( ! empty( $activation_notices ) ) {
 
@@ -128,8 +89,8 @@ class Activator {
 			}
 
 			// Delete the notices transients.
-			delete_transient( $this->plugin_prefix . '_activated' );
-			delete_transient( $this->plugin_prefix . '_activation_notices' );
+			delete_transient( MKDO_GROUND_CONTROL_PREFIX . '_activated' );
+			delete_transient( MKDO_GROUND_CONTROL_PREFIX . '_activation_notices' );
 		}
 	}
 }

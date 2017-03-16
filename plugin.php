@@ -1,19 +1,19 @@
 <?php
 /**
- * Plugin Name
+ * Ground Control
  *
- * @link              https://github.com/davetgreen/plugin-name
- * @package           dtg\plugin-name
+ * @link              https://github.com/mkdo/ground-control
+ * @package           mkdo\ground-control
  *
- * Plugin Name:       Plugin Name
- * Plugin URI:        https://github.com/davetgreen/plugin-name
+ * Plugin Name:       Ground Control
+ * Plugin URI:        https://github.com/mkdo/ground-control
  * Description:       A brief description of the plugin.
  * Version:           0.1.0
- * Author:            Dave Green <hello@davetgreen.me>
- * Author URI:        http://www.davetgreen.me
+ * Author:            Make Do <hello@makedo.net>
+ * Author URI:        https://makedo.net
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       plugin-name
+ * Text Domain:       ground-control
  * Domain Path:       /languages
  */
 
@@ -23,47 +23,44 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Constants.
-define( 'DTG_PLUGIN_NAME_ROOT', __FILE__ );
-define( 'DTG_PLUGIN_NAME_NAME', 'Plugin Name' );
-define( 'DTG_PLUGIN_NAME_TEXT_DOMAIN', 'plugin-name' );
-define( 'DTG_PLUGIN_NAME_PREFIX', 'plugin_name' );
+define( 'MKDO_GROUND_CONTROL_ROOT', __FILE__ );
+define( 'MKDO_GROUND_CONTROL_NAME', 'Ground Control' );
+define( 'MKDO_GROUND_CONTROL_PREFIX', 'ground_control' );
 
 // Classes.
-require_once 'php/class-helpers.php';
+require_once 'php/class-helper.php';
 require_once 'php/class-activator.php';
 require_once 'php/class-deactivator.php';
 require_once 'php/class-uninstaller.php';
-require_once 'php/class-assets-controller.php';
 require_once 'php/class-settings.php';
-require_once 'php/class-customizer.php';
-require_once 'php/class-main-controller.php';
+require_once 'php/class-controller-assets.php';
+require_once 'php/class-controller-main.php';
 
 // Namespaces.
-use dtg\plugin_name\Helpers;
-use dtg\plugin_name\Activator;
-use dtg\plugin_name\Deactivator;
-use dtg\plugin_name\Uninstaller;
-use dtg\plugin_name\Assets_Controller;
-use dtg\plugin_name\Settings;
-use dtg\plugin_name\Customizer;
-use dtg\plugin_name\Main_Controller;
+use mkdo\ground_control\Helper;
+use mkdo\ground_control\Activator;
+use mkdo\ground_control\Deactivator;
+use mkdo\ground_control\Uninstaller;
+use mkdo\ground_control\Settings;
+use mkdo\ground_control\Controller_Assets;
+use mkdo\ground_control\Controller_Main;
 
-// Instances.
-$helpers				  = new Helpers();
-$activator    			  = new Activator();
-$deactivator  			  = new Deactivator();
-$uninstaller  			  = new Uninstaller();
-$assets_controller  	  = new Assets_Controller();
+// Instances
+//
+// Optionally we can pass in the Activator, Deactivator and uninstaller, however
+// not every plugin needs these, so commenting out for now.
+//
+// $activator    			  = new Activator();
+// $deactivator  			  = new Deactivator();
+// $uninstaller  			  = new Uninstaller();
+//
+// These can easily be added to the list below and added to the main controller.
 $settings                 = new Settings();
-$customizer               = new Customizer();
-$main_controller          = new Main_Controller(
-	$activator,
-	$deactivator,
-	$uninstaller,
-	$assets_controller,
+$controller_assets  	  = new Controller_Assets();
+$controller_main          = new Controller_Main(
 	$settings,
-	$customizer
+	$controller_assets
 );
 
 // Go.
-$main_controller->run();
+$controller_main->run();

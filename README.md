@@ -1,4 +1,4 @@
-# Plugin Name
+# Ground Control
 
 A brief description of the plugin.
 
