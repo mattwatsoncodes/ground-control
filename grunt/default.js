@@ -3,11 +3,11 @@
 // ----------------------------------------------------------------------------
 module.exports = function( grunt ) {
 	grunt.registerTask( 'default', [
-		'sync',
+		// 'sync',
 		// "lint",
-		"spritesmith",
-		"grunticon",
-		"copy:grunticon",
+		// "spritesmith",
+		// "grunticon",
+		// "copy:grunticon",
 		"sass",
 		"postcss",
 		"copy:unminified_css",
@@ -18,8 +18,8 @@ module.exports = function( grunt ) {
 		"modernizr",
 		"concat",
 		"uglify",
-		"newer:svgmin",
-		"newer:imagemin",
+		// "newer:svgmin",
+		// "newer:imagemin",
 		"clean",
 		// "document",
 		"notify:build"
