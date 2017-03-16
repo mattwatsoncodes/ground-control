@@ -11,33 +11,14 @@ The plugin provides the following functionality:
 - Example functionality
 - etc...
 
-## [Installation](#installation)
+## [More Information](#more-information)
+You can find out more about the plugin, including the changelog in the [`readme.text` file](https://github.com/mwtsn/ground-control/blob/master/readme.txt), which the WordPress repository uses to display information about the plugin.
 
-- Download this repository and unzip it into the folder PLUGIN-SLUG
-- Upload the plugin folder to the `/wp-content/plugins/` directory
-- Activate the plugin through the 'Plugins' menu in WordPress
-- Configure the plugin via the options page/tab under the WordPress/WooCommerce 'Settings' Menu
+You can also view the plugin on the WordPress repository here: N/A
 
-## [Frequently Asked Questions](#faqs)
+## [Credits](#credits)
 
-There are no FAQs at this time.
+Built using the [Ground Control](https://github.com/mwtsn/ground-control) plugin framework. A framework based on root composition principles, built by [Matt Watson](https://github.com/mwtsn/) and [Dave Green](https://github.com/davetgreen/), with thanks to [Make Do](https://www.makedo.net/)
 
-## [Upgrade Notice](#upgrade-notice)
-
-There are no upgrade notices at this time.
-
-## [Requirements](#requirements)
-
-Detail any specific requirements here, such as WordPress/WooCommerce versions.
-
-## [Known Issues](#known-issues)
-
-There are no known issues at this time.
-
-## [Roadmap](#roadmap)
-
-There is no specific roadmap at this time.
-
-## [Changelog](#changelog)
-
-**0.0.1** - *01.01.1970* - Describe what changed in this version.
+_"Ground Control to Major Tom"_
+&mdash; With a big thanks to [Tom Nowell](https://tomjn.com) for his tutorial on [Root composition](https://tomjn.com/2015/06/24/root-composition-in-wordpress-plugins/) that got this all started.
