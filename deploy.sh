@@ -152,7 +152,7 @@ fi
 echo "Moving assets"
 # Make the directory if it doesn't already exist
 mkdir -p $SVNPATH/assets/
-mv $SVNPATH/trunk/assets/repository-assets/* $SVNPATH/assets/
+mv $SVNPATH/trunk/assets/repository/* $SVNPATH/assets/
 svn add --force $SVNPATH/assets/
 svn delete --force $SVNPATH/trunk/assets
 # We dont want all of our toys in the SVN repo, so lets remove them:
