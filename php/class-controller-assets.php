@@ -11,6 +11,10 @@ namespace mkdo\ground_control;
 
 /**
  * Sets up the public and admin area JS and CSS needed for this plugin.
+ *
+ * These enqueues should exist here for reference, but we highly recommend that
+ * the appropriate filters are used to deactivate these enqueues, and these are
+ * concatenated and enqueued in your own themes workflow.
  */
 class Controller_Assets {
 
@@ -38,27 +42,35 @@ class Controller_Assets {
 	 */
 	public function public_enqueue_scripts() {
 
+		$do_public_enqueue     = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_public_enqueue', true );
+		$do_public_css_enqueue = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_public_css_enqueue', true );
+		$do_public_js_enqueue  = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_public_js_enqueue', true );
+
 		/* CSS */
-		$plugin_css_url  = plugins_url( 'css/plugin.css', MKDO_GROUND_CONTROL_ROOT );
-		$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin.css';
-		wp_enqueue_style(
-			MKDO_GROUND_CONTROL_PREFIX . '-plugin-css',
-			$plugin_css_url,
-			array(),
-			filemtime( $plugin_css_path ),
-			false
-		);
+		if ( $do_public_enqueue && $do_public_css_enqueue ) {
+			$plugin_css_url  = plugins_url( 'css/plugin.css', MKDO_GROUND_CONTROL_ROOT );
+			$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin.css';
+			wp_enqueue_style(
+				MKDO_GROUND_CONTROL_PREFIX . '-plugin-css',
+				$plugin_css_url,
+				array(),
+				filemtime( $plugin_css_path ),
+				false
+			);
+		}
 
 		/* JS */
-		$plugin_js_url   = plugins_url( 'js/plugin.js', MKDO_GROUND_CONTROL_ROOT );
-		$plugin_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/js/plugin.js';
-		wp_enqueue_script(
-			MKDO_GROUND_CONTROL_PREFIX . '-plugin-js',
-			$plugin_js_url,
-			array( 'jquery' ),
-			filemtime( $plugin_js_path ),
-			true
-		);
+		if ( $do_public_enqueue && $do_public_js_enqueue ) {
+			$plugin_js_url   = plugins_url( 'js/plugin.js', MKDO_GROUND_CONTROL_ROOT );
+			$plugin_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/js/plugin.js';
+			wp_enqueue_script(
+				MKDO_GROUND_CONTROL_PREFIX . '-plugin-js',
+				$plugin_js_url,
+				array( 'jquery' ),
+				filemtime( $plugin_js_path ),
+				true
+			);
+		}
 	}
 
 	/**
@@ -68,31 +80,42 @@ class Controller_Assets {
 	 */
 	public function admin_enqueue_scripts() {
 
+		$do_admin_enqueue            = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_admin_enqueue', true );
+		$do_admin_css_enqueue        = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_admin_css_enqueue', true );
+		$do_admin_editor_css_enqueue = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_admin_editor_css_enqueue', true );
+		$do_admin_js_enqueue         = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_admin_js_enqueue', true );
+
 		/* CSS */
-		$plugin_css_url  = plugins_url( 'css/plugin-admin.css', MKDO_GROUND_CONTROL_ROOT );
-		$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin-admin.css';
-		wp_enqueue_style(
-			MKDO_GROUND_CONTROL_PREFIX . '-plugin-admin-css',
-			$plugin_css_url,
-			array(),
-			filemtime( $plugin_css_path ),
-			false
-		);
+		if ( $do_admin_enqueue && $do_admin_css_enqueue ) {
+			$plugin_css_url  = plugins_url( 'css/plugin-admin.css', MKDO_GROUND_CONTROL_ROOT );
+			$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin-admin.css';
+			wp_enqueue_style(
+				MKDO_GROUND_CONTROL_PREFIX . '-plugin-admin-css',
+				$plugin_css_url,
+				array(),
+				filemtime( $plugin_css_path ),
+				false
+			);
+		}
 
 		/* Editor CSS */
-		$editor_css_url  = plugins_url( 'css/plugin-admin-editor.css', MKDO_GROUND_CONTROL_ROOT );
-		$editor_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin-admin-editor.css';
-		add_editor_style( $editor_css_url . '?v=' . $editor_css_path );
+		if ( $do_admin_enqueue && $do_admin_editor_css_enqueue ) {
+			$editor_css_url  = plugins_url( 'css/plugin-admin-editor.css', MKDO_GROUND_CONTROL_ROOT );
+			$editor_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin-admin-editor.css';
+			add_editor_style( $editor_css_url . '?v=' . $editor_css_path );
+		}
 
 		/* JS */
-		$plugin_js_url   = plugins_url( 'js/plugin-admin.js', MKDO_GROUND_CONTROL_ROOT );
-		$plugin_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/js/plugin-admin.js';
-		wp_enqueue_script(
-			MKDO_GROUND_CONTROL_PREFIX . '-plugin-admin-js',
-			$plugin_js_url,
-			array( 'jquery' ),
-			filemtime( $plugin_js_path ),
-			true
-		);
+		if ( $do_admin_enqueue && $do_admin_js_enqueue ) {
+			$plugin_js_url   = plugins_url( 'js/plugin-admin.js', MKDO_GROUND_CONTROL_ROOT );
+			$plugin_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/js/plugin-admin.js';
+			wp_enqueue_script(
+				MKDO_GROUND_CONTROL_PREFIX . '-plugin-admin-js',
+				$plugin_js_url,
+				array( 'jquery' ),
+				filemtime( $plugin_js_path ),
+				true
+			);
+		}
 	}
 }

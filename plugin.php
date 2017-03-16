@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 // Constants.
 define( 'MKDO_GROUND_CONTROL_ROOT', __FILE__ );
 define( 'MKDO_GROUND_CONTROL_NAME', 'Ground Control' );
-define( 'MKDO_GROUND_CONTROL_PREFIX', 'ground_control' );
+define( 'MKDO_GROUND_CONTROL_PREFIX', 'mkdo_ground_control' );
 
 // Classes.
 require_once 'php/class-helper.php';

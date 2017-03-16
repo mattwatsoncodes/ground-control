@@ -63,7 +63,7 @@ class Settings {
 	 *
 	 * @since	0.1.0
 	 */
-	public function ground_control_example_section_cb() {
+	public function mkdo_ground_control_example_section_cb() {
 		echo '<p>' . esc_html( 'Example description for this section.', 'ground-control' ) . '</p>';
 	}
 
@@ -72,7 +72,7 @@ class Settings {
 	 *
 	 * @since	0.1.0
 	 */
-	public function ground_control_example_field_cb() {
+	public function mkdo_ground_control_example_field_cb() {
 		$example_option = get_option( MKDO_GROUND_CONTROL_PREFIX . '_example_option', 'Default text...' );
 		?>
 
