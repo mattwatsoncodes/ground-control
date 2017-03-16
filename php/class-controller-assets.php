@@ -40,7 +40,7 @@ class Controller_Assets {
 
 		/* CSS */
 		$plugin_css_url  = plugins_url( 'css/plugin.css', MKDO_GROUND_CONTROL_ROOT );
-		$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/public.css';
+		$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin.css';
 		wp_enqueue_style(
 			MKDO_GROUND_CONTROL_PREFIX . '-plugin-css',
 			$plugin_css_url,
@@ -50,8 +50,8 @@ class Controller_Assets {
 		);
 
 		/* JS */
-		$public_js_url   = plugins_url( 'js/plugin.js', MKDO_GROUND_CONTROL_ROOT );
-		$public_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/js/plugin.js';
+		$plugin_js_url   = plugins_url( 'js/plugin.js', MKDO_GROUND_CONTROL_ROOT );
+		$plugin_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/js/plugin.js';
 		wp_enqueue_script(
 			MKDO_GROUND_CONTROL_PREFIX . '-plugin-js',
 			$plugin_js_url,
@@ -70,7 +70,7 @@ class Controller_Assets {
 
 		/* CSS */
 		$plugin_css_url  = plugins_url( 'css/plugin-admin.css', MKDO_GROUND_CONTROL_ROOT );
-		$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/public-admin.css';
+		$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin-admin.css';
 		wp_enqueue_style(
 			MKDO_GROUND_CONTROL_PREFIX . '-plugin-admin-css',
 			$plugin_css_url,
@@ -81,12 +81,12 @@ class Controller_Assets {
 
 		/* Editor CSS */
 		$editor_css_url  = plugins_url( 'css/plugin-admin-editor.css', MKDO_GROUND_CONTROL_ROOT );
-		$editor_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/public-admin-editor.css';
+		$editor_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin-admin-editor.css';
 		add_editor_style( $editor_css_url . '?v=' . $editor_css_path );
 
 		/* JS */
-		$public_js_url   = plugins_url( 'js/plugin-admin.js', MKDO_GROUND_CONTROL_ROOT );
-		$public_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/js/plugin-admin.js';
+		$plugin_js_url   = plugins_url( 'js/plugin-admin.js', MKDO_GROUND_CONTROL_ROOT );
+		$plugin_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/js/plugin-admin.js';
 		wp_enqueue_script(
 			MKDO_GROUND_CONTROL_PREFIX . '-plugin-admin-js',
 			$plugin_js_url,
