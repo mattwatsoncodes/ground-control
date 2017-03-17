@@ -21,23 +21,9 @@ class Post_Example {
 	 * Do Work
 	 */
 	public function run() {
-		add_filter( 'gettext', array( $this, 'custom_title_placeholder' ) );
 		add_action( 'init', array( $this, 'register_post_type' ) );
-	}
-
-	/**
-	 * Custom Title Placeholder
-	 *
-	 * @param  string $input The placeholder text.
-	 * @return string        The altered placeholder text.
-	 */
-	public function custom_title_placeholder( $input ) {
-
-		if ( is_admin() && 'Enter title here' === $input && 'news' === get_post_type( get_the_ID() ) ) {
-			return __( 'Enter Example Title', 'ground-control' );
-		}
-
-		return $input;
+		add_filter( 'gettext', array( $this, 'title_placeholder' ) );
+		add_action( 'post_type_link', array( $this, 'post_type_link' ), 1, 3 );
 	}
 
 	/**
@@ -107,5 +93,42 @@ class Post_Example {
 		);
 
 		register_post_type( 'example', $args );
+	}
+
+	/**
+	 * Title Placeholder
+	 *
+	 * @param  string $input The placeholder text.
+	 * @return string        The altered placeholder text.
+	 */
+	public function title_placeholder( $input ) {
+
+		if ( is_admin() && 'Enter title here' === $input && 'news' === get_post_type( get_the_ID() ) ) {
+			return __( 'Enter Example Title', 'ground-control' );
+		}
+
+		return $input;
+	}
+
+	/**
+	 * Transform Post Type Link
+	 *
+	 * @param  string $link The original link.
+	 * @param  object $post The post object.
+	 * @return string       The transformed link
+	 */
+	public function post_type_link( $link, $post ) {
+
+		// Example
+		//
+		// Alter the permalink of the post type by changing the URL dynamically.
+		//
+		// This example replaces the link with a link to the post type archive
+		// with an anchor to the post on the post type archive.
+		if ( 'example' === $post->post_type ) {
+			$archive_link = get_post_type_archive_link( $post->post_type );
+			return $archive_link . '#post-' . $post->ID;
+		}
+		return $link;
 	}
 }
