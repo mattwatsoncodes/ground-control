@@ -11,6 +11,8 @@ namespace mkdo\ground_control;
 
 // Traits.
 require_once 'helpers/trait-get-category-tags.php';
+require_once 'helpers/trait-get-icons.php';
+require_once 'helpers/trait-render-view.php';
 
 /**
  * Helper class containing useful static methods.
@@ -20,4 +22,6 @@ require_once 'helpers/trait-get-category-tags.php';
  */
 class Helper {
 	use Helper_Get_Category_tags;
+	use Helper_Get_Icons;
+	use Helper_Render_View;
 }
