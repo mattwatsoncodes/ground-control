@@ -100,11 +100,20 @@ To use this you will need to make the script executable via the command line usi
 You will be asked to confirm your GitHub and SVN repositories.
 
 ## [More Information](#more-information)
-You can find out more about the plugin, including the changelog in the [`readme.text` file](https://github.com/mwtsn/ground-control/blob/master/readme.txt), which the WordPress repository uses to display information about the plugin.
+You can find out more about the plugin, including the changelog in the [`readme.text` file](https://github.com/mwtsn/ground-control/blob/master/readme.txt), which the
+WordPress repository uses to display information about the plugin.
 
 You can also view the plugin on the WordPress repository here: N/A
 
-## [Credits](#credits)
+## [Roadmap](#roadmap)
+A bunch of features will be coming to this framework, including:
+
+- A rename script in `/tools/rename.sh` that will go through the plugin, find and
+replace the default parameters with custom ones.
+- A `README.md` template in `/tools/README-template.md` that will replace this one
+with a generic `README.md` tailored specifically for a custom plugin.
+
+## [Credit](#credits)
 
 Built using the [Ground Control](https://github.com/mwtsn/ground-control) plugin framework. A framework based on root composition principles, built by [Matt Watson](https://github.com/mwtsn/) and [Dave Green](https://github.com/davetgreen/), with thanks to [Make Do](https://www.makedo.net/).
 
