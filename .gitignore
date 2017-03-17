@@ -7,15 +7,14 @@
 
 # Nested Git files.
 # -------------------------------------
-build/**/.git
-build/**/.gitignore
-build/**/.gitmodules
+**/.git
+**/.gitignore
+**/.gitmodules
 
 # Assets.
 # -------------------------------------
 assets/css/*
-!assets/css/.gitkeep
-assets/js/lib/modernizr-custom.js
+assets/js/lib/_modernizr-custom.js
 
 # Composer.
 # -------------------------------------
@@ -23,8 +22,8 @@ composer.lock
 
 # Dependencies.
 # -------------------------------------
-bower_components
-node_modules
+tools/bower_components
+tools/node_modules
 
 # Documentation & Reports.
 # -------------------------------------

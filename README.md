@@ -36,10 +36,10 @@ help you organise your assets better if you do.
 To get this up and running, when you first download the project run the following
 commands from the root of the plugin:
 
-`cd tools`
-`sudo npm install`
-`bower update`
-`cd ..`
+`cd tools`  
+`sudo npm install`  
+`bower update`  
+`cd ..`  
 
 This will change the directory to the tools directory, install all the components
 you need to run commands such as Grunt, as well as any dependancies that your
@@ -74,4 +74,4 @@ Built using the [Ground Control](https://github.com/mwtsn/ground-control) plugin
 _"Ground Control to Major Tom"_
 &mdash; With a big thanks to [Tom Nowell](https://tomjn.com) for his tutorial on [Root composition](https://tomjn.com/2015/06/24/root-composition-in-wordpress-plugins/) that got this all started.
 
-Grunt workflow comes with thanks to [Dave Green](https://github.com/davetgreen/), and [Make Do](https://www.makedo.net/)
+[Kapow Grunt](https://github.com/mkdo/kapow-grunt) workflow comes with thanks to [Dave Green](https://github.com/davetgreen/) and [Make Do](https://www.makedo.net/).
