@@ -73,7 +73,7 @@ Don't have a workflow? We recommend [Kapow](https://github.com/mkdo/kapow-setup)
 The enqueue filters all accept a boolean, and are true by default. Use the
 following method to disable them:
 
-`apply_filters( 'mkdo_ground_control_[filter_name]', '__return_false');`
+`add_filter( 'mkdo_ground_control_[filter_name]', '__return_false');`
 
 The filters available are:
 
@@ -86,10 +86,25 @@ The filters available are:
 - `mkdo_ground_control_do_admin_js_enqueue` &mdash; hide the admin JS enqueue.
 - `mkdo_ground_control_do_customizer_enqueue` &mdash; hide the customizer CSS enqueue.
 
+#### Render Views
+Views reside within the `/views` folder in the plugin, but you may wish to override
+these views in your theme.
+
+Use the filter `mkdo_ground_control_view_template_folder` to set where the view
+sits within your theme. EG:
+
+`add_filter( 'mkdo_ground_control_view_template_folder', function() {
+	return get_stylesheet_directory() . '/template-parts/ground-control/';
+} );`
+
+You can also return a boolean for the filter `mkdo_ground_control_view_template_folder_check_exists`
+to perform an optional check if the template exists in your theme. However best
+practice is duplicating the `/views` folder within your theme at a custom location.
+
 ## [Testing](#testing)
 Runs tests such as example files and functionality by making the filter `mkdo_ground_control_run_tests` return true. EG:
 
-`apply_filters( 'mkdo_ground_control_run_tests', '__return_true');`
+`add_filter( 'mkdo_ground_control_run_tests', '__return_true');`
 
 ## [Deploying](#deploying)
 This plugin framework contains a deployment script that will tag your build in GitHub
