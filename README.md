@@ -60,11 +60,16 @@ The plugin takes advantage of various hooks and filters:
 ### Filters
 Here are all the filters within the plugin:
 
-#### Tests
-- `mkdo_ground_control_run_tests` &mdash; runs tests such as example files and functionality. These are configured in `/tools/test/examples-run.php`.
+#### Testing
+- See [Testing](#testing).
 
 #### Enqueues
-- 
+-
+
+## [Testing](#testing)
+Runs tests such as example files and functionality by adding the filter `mkdo_ground_control_run_tests`. EG:
+
+`apply_filters( 'mkdo_ground_control_run_tests', '__return_true');`
 
 ## [Deploying](#deploying)
 This plugin framework contains a deployment script that will tag your build in GitHub
