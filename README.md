@@ -54,6 +54,18 @@ relevant folders in `/assets/`.
 
 For more information about what this does, read up on [Kapow Grunt](https://github.com/mkdo/kapow-grunt).
 
+## [Hooks and Filters](#hooks-filters)
+The plugin takes advantage of various hooks and filters:
+
+### Filters
+Here are all the filters within the plugin:
+
+#### Tests
+- `mkdo_ground_control_run_tests` &mdash; runs tests such as example files and functionality. These are configured in `/tools/test/examples-run.php`.
+
+#### Enqueues
+- 
+
 ## [Deploying](#deploying)
 This plugin framework contains a deployment script that will tag your build in GitHub
 and deploy to the WordPress SVN.

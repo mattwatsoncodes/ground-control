@@ -1,16 +1,16 @@
 <?php
 /**
- * Class Post_News
+ * Class Post_Example
  *
- * @package mkdo\global_food_security_core
+ * @package mkdo\ground_control
  */
 
-namespace mkdo\global_food_security_core;
+namespace mkdo\ground_control;
 
 /**
- * Register the News Post Type
+ * Register the Example Post Type
  */
-class Post_News {
+class Post_Example {
 
 	/**
 	 * Constructor
@@ -21,20 +21,20 @@ class Post_News {
 	 * Do Work
 	 */
 	public function run() {
-		add_filter( 'gettext', array( $this, 'custom_enter_title' ) );
+		add_filter( 'gettext', array( $this, 'custom_title_placeholder' ) );
 		add_action( 'init', array( $this, 'register_post_type' ) );
 	}
 
 	/**
-	 * Custom Enter Title
+	 * Custom Title Placeholder
 	 *
 	 * @param  string $input The placeholder text.
 	 * @return string        The altered placeholder text.
 	 */
-	public function custom_enter_title( $input ) {
+	public function custom_title_placeholder( $input ) {
 
 		if ( is_admin() && 'Enter title here' === $input && 'news' === get_post_type( get_the_ID() ) ) {
-			return __( 'Enter News Headline', 'global-food-security-core' );
+			return __( 'Enter Example Title', 'ground-control' );
 		}
 
 		return $input;
@@ -46,66 +46,66 @@ class Post_News {
 	public function register_post_type() {
 
 		$labels = array(
-			'name'                  => _x( 'News', 'Post Type General Name', 'global-food-security-core' ),
-			'singular_name'         => _x( 'News Item', 'Post Type Singular Name', 'global-food-security-core' ),
-			'menu_name'             => __( 'News', 'global-food-security-core' ),
-			'name_admin_bar'        => __( 'News', 'global-food-security-core' ),
-			'archives'              => __( 'News Item Archives', 'global-food-security-core' ),
-			'parent_item_colon'     => __( 'Parent News Item:', 'global-food-security-core' ),
-			'all_items'             => __( 'All News', 'global-food-security-core' ),
-			'add_new_item'          => __( 'Add New News', 'global-food-security-core' ),
-			'add_new'               => __( 'Add New', 'global-food-security-core' ),
-			'new_item'              => __( 'New News Item', 'global-food-security-core' ),
-			'edit_item'             => __( 'Edit News Item', 'global-food-security-core' ),
-			'update_item'           => __( 'Update News Item', 'global-food-security-core' ),
-			'view_item'             => __( 'View News Item', 'global-food-security-core' ),
-			'search_items'          => __( 'Search News Item', 'global-food-security-core' ),
-			'not_found'             => __( 'Not found', 'global-food-security-core' ),
-			'not_found_in_trash'    => __( 'Not found in Trash', 'global-food-security-core' ),
-			'featured_image'        => __( 'Featured Image', 'global-food-security-core' ),
-			'set_featured_image'    => __( 'Set featured image', 'global-food-security-core' ),
-			'remove_featured_image' => __( 'Remove featured image', 'global-food-security-core' ),
-			'use_featured_image'    => __( 'Use as featured image', 'global-food-security-core' ),
-			'insert_into_item'      => __( 'Insert into News Item', 'global-food-security-core' ),
-			'uploaded_to_this_item' => __( 'Uploaded to this News Item', 'global-food-security-core' ),
-			'items_list'            => __( 'News list', 'global-food-security-core' ),
-			'items_list_navigation' => __( 'News list navigation', 'global-food-security-core' ),
-			'filter_items_list'     => __( 'Filter News list', 'global-food-security-core' ),
+			'name'                  => _x( 'Examples', 'Post Type General Name', 'ground-control' ),
+			'singular_name'         => _x( 'Example', 'Post Type Singular Name', 'ground-control' ),
+			'menu_name'             => __( 'Examples', 'ground-control' ),
+			'name_admin_bar'        => __( 'Examples', 'ground-control' ),
+			'archives'              => __( 'Example Archives', 'ground-control' ),
+			'parent_item_colon'     => __( 'Parent Example:', 'ground-control' ),
+			'all_items'             => __( 'All Examples', 'ground-control' ),
+			'add_new_item'          => __( 'Add New Examples', 'ground-control' ),
+			'add_new'               => __( 'Add New', 'ground-control' ),
+			'new_item'              => __( 'New Example', 'ground-control' ),
+			'edit_item'             => __( 'Edit Example', 'ground-control' ),
+			'update_item'           => __( 'Update Example', 'ground-control' ),
+			'view_item'             => __( 'View Example', 'ground-control' ),
+			'search_items'          => __( 'Search Example', 'ground-control' ),
+			'not_found'             => __( 'Not found', 'ground-control' ),
+			'not_found_in_trash'    => __( 'Not found in Trash', 'ground-control' ),
+			'featured_image'        => __( 'Featured Image', 'ground-control' ),
+			'set_featured_image'    => __( 'Set featured image', 'ground-control' ),
+			'remove_featured_image' => __( 'Remove featured image', 'ground-control' ),
+			'use_featured_image'    => __( 'Use as featured image', 'ground-control' ),
+			'insert_into_item'      => __( 'Insert into Example', 'ground-control' ),
+			'uploaded_to_this_item' => __( 'Uploaded to this Example', 'ground-control' ),
+			'items_list'            => __( 'Examples list', 'ground-control' ),
+			'items_list_navigation' => __( 'Examples list navigation', 'ground-control' ),
+			'filter_items_list'     => __( 'Filter Examples list', 'ground-control' ),
 		);
 		$args = array(
-			'label'               => __( 'News Item', 'global-food-security-core' ),
-			'description'         => __( 'Custom Post Type for News', 'global-food-security-core' ),
+			'label'               => __( 'Example', 'ground-control' ),
+			'description'         => __( 'Custom Post Type for Examples', 'ground-control' ),
 			'labels'              => $labels,
 			'supports'            => array(
 				'title',
 				'editor',
-				// 'author',
+				'author',
 				'thumbnail',
 				'excerpt',
-				// 'trackbacks',
-				// 'custom-fields',
-				// 'comments',
-				// 'revisions',
-				// 'page-attributes',
-				// 'post-formats',
+				'trackbacks',
+				'custom-fields',
+				'comments',
+				'revisions',
+				'page-attributes',
+				'post-formats',
 			),
 			'hierarchical'        => false,
 			'public'              => true,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
 			'menu_position'       => 20,
-			'menu_icon'           => 'dashicons-welcome-widgets-menus',
+			'menu_icon'           => 'dashicons-admin-post',
 			'show_in_admin_bar'   => true,
 			'show_in_nav_menus'   => true,
 			'show_in_rest'        => false,
 			'can_export'          => true,
-			'has_archive'         => 'news',
+			'has_archive'         => 'examples',
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
 			'capability_type'     => 'post',
-			'rewrite'             => array( 'slug' => _x( 'news', 'News URL', 'global-food-security-core' ) ),
+			'rewrite'             => array( 'slug' => _x( 'example', 'Examples URL', 'ground-control' ) ),
 		);
 
-		register_post_type( 'news', $args );
+		register_post_type( 'example', $args );
 	}
 }

@@ -69,3 +69,8 @@ $controller_main          = new Controller_Main(
 
 // Go.
 $controller_main->run();
+
+// Tests.
+if ( apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_run_tests', false ) ) {
+	require_once 'tools/test/examples-run.php';
+}

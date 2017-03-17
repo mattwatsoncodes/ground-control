@@ -71,9 +71,9 @@ class Controller_Assets {
 	 */
 	public function public_enqueue_scripts() {
 
-		$do_public_enqueue     = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_public_enqueue', true );
-		$do_public_css_enqueue = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_public_css_enqueue', true );
-		$do_public_js_enqueue  = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_public_js_enqueue', true );
+		$do_public_enqueue     = apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_do_public_enqueue', true );
+		$do_public_css_enqueue = apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_do_public_css_enqueue', true );
+		$do_public_js_enqueue  = apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_do_public_js_enqueue', true );
 
 		/* CSS */
 		if ( $do_public_enqueue && $do_public_css_enqueue ) {
@@ -109,10 +109,10 @@ class Controller_Assets {
 	 */
 	public function admin_enqueue_scripts() {
 
-		$do_admin_enqueue            = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_admin_enqueue', true );
-		$do_admin_css_enqueue        = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_admin_css_enqueue', true );
-		$do_admin_editor_css_enqueue = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_admin_editor_css_enqueue', true );
-		$do_admin_js_enqueue         = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_admin_js_enqueue', true );
+		$do_admin_enqueue            = apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_do_admin_enqueue', true );
+		$do_admin_css_enqueue        = apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_do_admin_css_enqueue', true );
+		$do_admin_editor_css_enqueue = apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_do_admin_editor_css_enqueue', true );
+		$do_admin_js_enqueue         = apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_do_admin_js_enqueue', true );
 
 		/* CSS */
 		if ( $do_admin_enqueue && $do_admin_css_enqueue ) {
@@ -155,7 +155,7 @@ class Controller_Assets {
 	 */
 	public function customize_preview_init() {
 
-		$do_customizer_enqueue = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_customizer_enqueue', true );
+		$do_customizer_enqueue = apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_do_customizer_enqueue', true );
 
 		if ( $do_customizer_enqueue ) {
 			$customizer_js_url  = plugins_url( 'assets/js/customizer' . $this->asset_suffix . '.js', MKDO_GROUND_CONTROL_ROOT );
