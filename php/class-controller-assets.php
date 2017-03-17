@@ -14,7 +14,7 @@ namespace mkdo\ground_control;
  *
  * These enqueues should exist here for reference, but we highly recommend that
  * the appropriate filters are used to deactivate these enqueues, and these are
- * concatenated and enqueued in your own themes workflow.
+ * concatenated and enqueued in your own theme workflow.
  */
 class Controller_Assets {
 

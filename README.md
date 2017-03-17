@@ -64,10 +64,30 @@ Here are all the filters within the plugin:
 - See [Testing](#testing).
 
 #### Enqueues
--
+CSS and JS Enqueues exist within the plugin for reference and development, but
+we highly recommend that the appropriate filters are used to deactivate these
+enqueues, and these are concatenated and enqueued using your own theme workflow.
+
+Don't have a workflow? We recommend [Kapow](https://github.com/mkdo/kapow-setup).
+
+The enqueue filters all accept a boolean, and are true by default. Use the
+following method to disable them:
+
+`apply_filters( 'mkdo_ground_control_[filter_name]', '__return_false');`
+
+The filters available are:
+
+- `mkdo_ground_control_do_public_enqueue` &mdash; hide all the public asset enqueues.
+- `mkdo_ground_control_do_public_css_enqueue` &mdash; hide the public CSS enqueue.
+- `mkdo_ground_control_do_public_js_enqueue` &mdash; hide the public JS enqueue.
+- `mkdo_ground_control_do_admin_enqueue` &mdash; hide all the admin asset enqueues.
+- `mkdo_ground_control_do_admin_css_enqueue` &mdash; hide the admin CSS enqueue.
+- `mkdo_ground_control_do_admin_editor_css_enqueue` &mdash; hide the admin editor CSS enqueue.
+- `mkdo_ground_control_do_admin_js_enqueue` &mdash; hide the admin JS enqueue.
+- `mkdo_ground_control_do_customizer_enqueue` &mdash; hide the customizer CSS enqueue.
 
 ## [Testing](#testing)
-Runs tests such as example files and functionality by adding the filter `mkdo_ground_control_run_tests`. EG:
+Runs tests such as example files and functionality by making the filter `mkdo_ground_control_run_tests` return true. EG:
 
 `apply_filters( 'mkdo_ground_control_run_tests', '__return_true');`
 
