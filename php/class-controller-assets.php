@@ -61,6 +61,7 @@ class Controller_Assets {
 	public function run() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'public_enqueue_scripts' ), 10 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10 );
+		add_action( 'customize_preview_init', array( $this, 'customize_preview_init' ), 10 );
 	}
 
 	/**
@@ -142,6 +143,28 @@ class Controller_Assets {
 				$plugin_js_url,
 				array( 'jquery' ),
 				filemtime( $plugin_js_path ),
+				true
+			);
+		}
+	}
+
+	/**
+	 * Enqueue live preview JS handlers.
+	 *
+	 * @since	0.1.0
+	 */
+	public function customize_preview_init() {
+
+		$do_customizer_enqueue = apply_filters( MKDO_GROUND_CONTROL_PREFIX . 'do_customizer_enqueue', true );
+
+		if ( $do_customizer_enqueue ) {
+			$customizer_js_url  = plugins_url( 'assets/js/customizer' . $this->asset_suffix . '.js', MKDO_GROUND_CONTROL_ROOT );
+			$customizer_js_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/assets/js/customizer.js';
+			wp_enqueue_script(
+				MKDO_GROUND_CONTROL_PREFIX . '-customizer',
+				$customizer_js_url,
+				array( 'customize-preview' ),
+				filemtime( $customizer_js_path ),
 				true
 			);
 		}
