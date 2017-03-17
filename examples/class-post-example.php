@@ -13,9 +13,20 @@ namespace mkdo\ground_control;
 class Post_Example {
 
 	/**
+	 * The Post Type.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $post_type;
+
+	/**
 	 * Constructor
 	 */
-	function __construct() {}
+	function __construct() {
+		$this->post_type = 'example';
+	}
 
 	/**
 	 * Do Work
@@ -24,6 +35,7 @@ class Post_Example {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'gettext', array( $this, 'title_placeholder' ) );
 		add_action( 'post_type_link', array( $this, 'post_type_link' ), 1, 3 );
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 10, 1 );
 	}
 
 	/**
@@ -39,7 +51,7 @@ class Post_Example {
 			'archives'              => __( 'Example Archives', 'ground-control' ),
 			'parent_item_colon'     => __( 'Parent Example:', 'ground-control' ),
 			'all_items'             => __( 'All Examples', 'ground-control' ),
-			'add_new_item'          => __( 'Add New Examples', 'ground-control' ),
+			'add_new_item'          => __( 'Add New Example', 'ground-control' ),
 			'add_new'               => __( 'Add New', 'ground-control' ),
 			'new_item'              => __( 'New Example', 'ground-control' ),
 			'edit_item'             => __( 'Edit Example', 'ground-control' ),
@@ -92,7 +104,7 @@ class Post_Example {
 			'rewrite'             => array( 'slug' => _x( 'example', 'Examples URL', 'ground-control' ) ),
 		);
 
-		register_post_type( 'example', $args );
+		register_post_type( $this->post_type, $args );
 	}
 
 	/**
@@ -103,7 +115,7 @@ class Post_Example {
 	 */
 	public function title_placeholder( $input ) {
 
-		if ( is_admin() && 'Enter title here' === $input && 'news' === get_post_type( get_the_ID() ) ) {
+		if ( is_admin() && 'Enter title here' === $input && $this->post_type === get_post_type( get_the_ID() ) ) {
 			return __( 'Enter Example Title', 'ground-control' );
 		}
 
@@ -125,10 +137,29 @@ class Post_Example {
 		//
 		// This example replaces the link with a link to the post type archive
 		// with an anchor to the post on the post type archive.
-		if ( 'example' === $post->post_type ) {
+		if ( $this->post_type === $post->post_type ) {
 			$archive_link = get_post_type_archive_link( $post->post_type );
 			return $archive_link . '#post-' . $post->ID;
 		}
 		return $link;
+	}
+
+	/**
+	 * Filter the Archive Title
+	 *
+	 * Will work with any archive title, it just needs filtering right.
+	 * See https://developer.wordpress.org/reference/functions/get_the_archive_title/.
+	 *
+	 * @param  string $title The original title.
+	 * @return string        The transformed title
+	 */
+	public function get_the_archive_title( $title ) {
+
+	    if ( is_post_type_archive( $this->post_type ) ) {
+			$title_prefix = esc_html__( 'My Example Prefix', 'ground-control' );
+	        $title        = sprintf( __( '%1$s: %2$s' ), $title_prefix, post_type_archive_title( '', false ) );
+	    }
+
+		return $title;
 	}
 }

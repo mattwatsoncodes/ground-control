@@ -71,6 +71,30 @@ $controller_main          = new Controller_Main(
 $controller_main->run();
 
 // Tests.
-if ( apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_run_tests', false ) ) {
-	require_once 'tools/test/examples-run.php';
-}
+add_action( 'after_setup_theme', function() {
+	if ( apply_filters( MKDO_GROUND_CONTROL_PREFIX . '_run_tests', false ) ) {
+
+		// TODO:
+		//
+		// Add in various helpers and examples:
+		//
+		// - Settings Helpers
+		// - Settings / Bottom of page branding / nag (new)
+		// - Widget Examples and Widget Helpers (inc Tiny MCE Widget)
+		// - Shortcode Examples and Shortcode Helpers (inc Shortcake example)
+		// - Meta Examples and Meta Helpers
+		// - Taxonomy Examples and Taxonomy Helpers
+		// - Taxonomy Box Hide, Replace with Meta
+		// - Proper View Example
+		// - Common Specific Examples (People, Address, Etc...)
+		// - Tiny MCE Extension Example
+		// - Gravity Forms Examples
+		// - Google Maps Helpers and Examples
+		// - Grab Transients from Daves version for installer and uninstaller
+		// - Blog about each of these
+		//
+		// I may not get all these in, but I will roadmap what I cant get in
+		// immediately.
+		require_once 'tools/test/examples-run.php';
+	}
+});
