@@ -29,6 +29,6 @@ node_modules
 # Documentation & Reports.
 # -------------------------------------
 docs/*
-tests/docs/*
+tools/docs/*
 reports/*
-tests/reports/*
+tools/reports/*

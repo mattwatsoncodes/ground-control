@@ -159,15 +159,8 @@ svn delete --force $SVNPATH/trunk/assets
 echo "Deleting unwanted assets"
 svn delete --force $SVNPATH/trunk/deploy.sh
 svn delete --force $SVNPATH/trunk/examples
-svn delete --force $SVNPATH/trunk/tests
-svn delete --force $SVNPATH/trunk/gruntfile.js
-svn delete --force $SVNPATH/trunk/bower.js
-svn delete --force $SVNPATH/trunk/gruntfile.js
-svn delete --force $SVNPATH/trunk/grunt
-svn delete --force $SVNPATH/trunk/node_modules
-svn delete --force $SVNPATH/trunk/bower_components
-svn delete --force $SVNPATH/trunk/docs
-svn delete --force $SVNPATH/trunk/reports
+svn delete --force $SVNPATH/trunk/tools
+svn delete --force $SVNPATH/trunk/.DS_Store
 
 echo "Changing directory to SVN and committing to trunk"
 cd $SVNPATH/trunk/

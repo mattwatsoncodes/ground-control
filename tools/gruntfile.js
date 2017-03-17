@@ -33,13 +33,13 @@ module.exports = function(grunt) {
 				// Documentation path relative to the
 				// project root - NO trailing slash.
 				// -------------------------------------
-				docs_path: 'tests/docs',
+				docs_path: 'tools/docs',
 
 				// -------------------------------------
 				// Reports path relative to the project
 				// root - NO trailing slash.
 				// -------------------------------------
-				reports_path: 'tests/reports',
+				reports_path: 'tools/reports',
 
 				// -------------------------------------
 				// Assets path relative to the project
@@ -184,6 +184,8 @@ module.exports = function(grunt) {
 	// Provides a summary of the time tasks have taken.
 	// -----------------------------------------------------------------------------
 	require('time-grunt')(grunt);
+
+	grunt.file.setBase( '../' );
 
 	// -----------------------------------------------------------------------------
 	// Silences grunt-newer.
