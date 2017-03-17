@@ -11,6 +11,7 @@ namespace mkdo\ground_control;
 
 // Traits.
 require_once 'helpers/trait-create-guid.php';
+require_once 'helpers/trait-format-bytes.php';
 require_once 'helpers/trait-get-category-tags.php';
 require_once 'helpers/trait-get-icons.php';
 require_once 'helpers/trait-render-view.php';
@@ -23,6 +24,7 @@ require_once 'helpers/trait-render-view.php';
  */
 class Helper {
 	use Helper_Create_GUID;
+	use Helper_Format_Bytes;
 	use Helper_Get_Category_tags;
 	use Helper_Get_Icons;
 	use Helper_Render_View;
