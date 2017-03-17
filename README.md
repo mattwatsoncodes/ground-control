@@ -28,6 +28,13 @@ The plugin provides the following functionality:
 - Example functionality
 - etc...
 
+## [Workflow](#workflow)
+
+The plugin comes with its own Grunt based workflow based on [Kapow Grunt](https://github.com/mkdo/kapow-grunt) . You don't have to use it, but it will
+help you organise your assets better if you do.
+
+@TODO: Add instructions on how to use the Grunt Workflow.
+
 ## [Deploying](#deploying)
 This plugin framework contains a deployment script that will tag your build in GitHub
 and deploy to the WordPress SVN.

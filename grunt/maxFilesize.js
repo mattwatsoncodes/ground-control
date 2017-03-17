@@ -9,9 +9,9 @@ module.exports = {
 			maxBytes: 288000
 		},
 		src: [
-			'<%= siteInfo.css_dir %>/plugin.css',
-			'<%= siteInfo.css_dir %>/plugin-admin.css',
-			'<%= siteInfo.css_dir %>/plugin-admin-editor.css', 
+			'<%= siteInfo.assets_path %>/<%= siteInfo.css_dir %>/plugin.css',
+			'<%= siteInfo.assets_path %>/<%= siteInfo.css_dir %>/plugin-admin.css',
+			'<%= siteInfo.assets_path %>/<%= siteInfo.css_dir %>/plugin-admin-editor.css',
 		]
 	}
 }

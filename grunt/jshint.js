@@ -20,8 +20,8 @@ module.exports = {
 			force: true
 		},
 		src: [
-			'<%= siteInfo.assets_path %>/<%= siteInfo.js_dir %>/**/*.js',
-			'!<%= siteInfo.assets_path %>/<%= siteInfo.js_dir %>/lib/modernizr-custom.js'
+			'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/**/*.js',
+			'!<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/lib/modernizr-custom.js'
 		]
 	}
 };

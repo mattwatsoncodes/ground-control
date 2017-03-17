@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 		// -----------------------------------------------------------------------------
 		// Anything you define within the main 'data' object can be accessed
 		// both in the Gruntfile and in the individual task configurations e.g.
-		// <%= pluginInfo.theme_name %>, <%= siteInfo.assets_path %> etc.
+		// <%= pluginInfo.theme_name %>, <%= siteInfo.assets_path_raw %> etc.
 		// -----------------------------------------------------------------------------
 		data: {
 			// -------------------------------------
@@ -33,18 +33,19 @@ module.exports = function(grunt) {
 				// Documentation path relative to the
 				// project root - NO trailing slash.
 				// -------------------------------------
-				docs_path: 'docs',
+				docs_path: 'tests/docs',
 
 				// -------------------------------------
 				// Reports path relative to the project
 				// root - NO trailing slash.
 				// -------------------------------------
-				reports_path: 'reports',
+				reports_path: 'tests/reports',
 
 				// -------------------------------------
 				// Assets path relative to the project
 				// root - NO trailing slash.
 				// -------------------------------------
+				assets_path_raw: 'assets/',
 				assets_path: 'assets',
 
 				// -------------------------------------
@@ -124,7 +125,7 @@ module.exports = function(grunt) {
 			// for PUBLIC enqueues.
 			// -------------------------------------
 			concatPublic: [
-				'<%= siteInfo.assets_path %>/<%= siteInfo.js_dir %>/plugin.js'
+				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/plugin.js'
 			],
 
 			// -------------------------------------
@@ -132,7 +133,7 @@ module.exports = function(grunt) {
 			// for ADMIN enqueues.
 			// -------------------------------------
 			concatAdmin: [
-				'<%= siteInfo.assets_path %>/<%= siteInfo.js_dir %>/plugin-admin.js'
+				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/plugin-admin.js'
 			],
 
 			// -------------------------------------
@@ -140,7 +141,7 @@ module.exports = function(grunt) {
 			// for CUSTOMIZER enqueues.
 			// -------------------------------------
 			concatCustomizer: [
-				'<%= siteInfo.assets_path %>/<%= siteInfo.js_dir %>/customizer.js'
+				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/customizer.js'
 			],
 
 			// -------------------------------------
@@ -173,8 +174,8 @@ module.exports = function(grunt) {
 				// }
 				// -------------------------------------
 				{
-					src: ['<%= siteInfo.assets_path %>/<%= siteInfo.fonts_dir %>/**'],
-					dest: '<%= pluginInfo.fonts_dir %>/'
+					src: ['<%= siteInfo.assets_path_raw %>/<%= siteInfo.fonts_dir %>/**'],
+					dest: '<%= siteInfo.assets_path %>/<%= pluginInfo.fonts_dir %>/'
 				}
 			]
 		}

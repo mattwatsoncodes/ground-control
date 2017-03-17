@@ -6,6 +6,6 @@ module.exports = {
 		formatter: 'stylish',
 		outputFile: '<%= siteInfo.reports_path %>/sasslint.xml'
 	},
-	target: ['<%= siteInfo.assets_path %>/<%= siteInfo.sass_dir %>/**/*.scss']
+	target: ['<%= siteInfo.assets_path_raw %>/<%= siteInfo.sass_dir %>/**/*.scss']
 };
 

@@ -21,7 +21,7 @@ module.exports = {
 	// Minify JPG & PNG images.
 	// -------------------------------------
 	images_jpg: {
-		files: [ '<%= siteInfo.assets_path %>/<%= siteInfo.img_dir %>/**/*.{jpg,png,gif}' ],
+		files: [ '<%= siteInfo.assets_path_raw %>/<%= siteInfo.img_dir %>/**/*.{jpg,png,gif}' ],
 		tasks: [
 			'newer:imagemin',
 			'notify:images'
@@ -31,7 +31,7 @@ module.exports = {
 	// Minify SVG images.
 	// -------------------------------------
 	images_svg: {
-			files: [ '<%= siteInfo.assets_path %>/<%= siteInfo.img_dir %>/**/*.svg' ],
+			files: [ '<%= siteInfo.assets_path_raw %>/<%= siteInfo.img_dir %>/**/*.svg' ],
 			tasks: [
 					'newer:svgmin',
 					'notify:images'
@@ -42,8 +42,8 @@ module.exports = {
 	// -------------------------------------
 	scripts: {
 		files: [
-			'<%= siteInfo.assets_path %>/<%= siteInfo.js_dir %>/**/*.js',
-			'!<%= siteInfo.assets_path %>/<%= siteInfo.js_dir %>/lib/modernizr-custom.js'
+			'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/**/*.js',
+			'!<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/lib/modernizr-custom.js'
 		],
 		tasks: [
 			// 'jshint',
@@ -59,7 +59,7 @@ module.exports = {
 	// Process styles.
 	// -------------------------------------
 	styles: {
-		files: [ '<%= siteInfo.assets_path %>/<%= siteInfo.sass_dir %>/**/*.scss' ],
+		files: [ '<%= siteInfo.assets_path_raw %>/<%= siteInfo.sass_dir %>/**/*.scss' ],
 		tasks: [
 			// 'scsslint',
 			'spritesmith',

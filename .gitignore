@@ -29,6 +29,6 @@ node_modules
 # Documentation & Reports.
 # -------------------------------------
 docs/*
-!docs/.gitkeep
+tests/docs/*
 reports/*
-!reports/.gitkeep
+tests/reports/*

@@ -19,11 +19,39 @@ namespace mkdo\ground_control;
 class Controller_Assets {
 
 	/**
+	 * Is debug mode on
+	 *
+	 * @var 	bool
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $debug_mode;
+
+	/**
+	 * Asset Suffix
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $asset_suffix;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since	0.1.0
 	 */
-	public function __construct() {}
+	public function __construct() {
+		$this->debug_mode   = false;
+		$this->asset_suffix = '.min';
+
+		// Check if WordPress is in debug mode, if it is then we do not want to
+		// load the minified assets.
+		if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG ) {
+			$this->debug_mode   = true;
+			$this->asset_suffix = '';
+		}
+	}
 
 	/**
 	 * Unleash Hell.
@@ -48,8 +76,8 @@ class Controller_Assets {
 
 		/* CSS */
 		if ( $do_public_enqueue && $do_public_css_enqueue ) {
-			$plugin_css_url  = plugins_url( 'css/plugin.css', MKDO_GROUND_CONTROL_ROOT );
-			$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin.css';
+			$plugin_css_url  = plugins_url( 'assets/css/plugin' . $this->asset_suffix . '.css', MKDO_GROUND_CONTROL_ROOT );
+			$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/assets/css/plugin' . $this->asset_suffix . '.css';
 			wp_enqueue_style(
 				MKDO_GROUND_CONTROL_PREFIX . '-plugin-css',
 				$plugin_css_url,
@@ -61,8 +89,8 @@ class Controller_Assets {
 
 		/* JS */
 		if ( $do_public_enqueue && $do_public_js_enqueue ) {
-			$plugin_js_url   = plugins_url( 'js/plugin.js', MKDO_GROUND_CONTROL_ROOT );
-			$plugin_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/js/plugin.js';
+			$plugin_js_url   = plugins_url( 'assets/js/plugin' . $this->asset_suffix . '.js', MKDO_GROUND_CONTROL_ROOT );
+			$plugin_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/assets/js/plugin' . $this->asset_suffix . '.js';
 			wp_enqueue_script(
 				MKDO_GROUND_CONTROL_PREFIX . '-plugin-js',
 				$plugin_js_url,
@@ -87,8 +115,8 @@ class Controller_Assets {
 
 		/* CSS */
 		if ( $do_admin_enqueue && $do_admin_css_enqueue ) {
-			$plugin_css_url  = plugins_url( 'css/plugin-admin.css', MKDO_GROUND_CONTROL_ROOT );
-			$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin-admin.css';
+			$plugin_css_url  = plugins_url( 'assets/css/plugin-admin' . $this->asset_suffix . '.css', MKDO_GROUND_CONTROL_ROOT );
+			$plugin_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/assets/css/plugin-admin' . $this->asset_suffix . '.css';
 			wp_enqueue_style(
 				MKDO_GROUND_CONTROL_PREFIX . '-plugin-admin-css',
 				$plugin_css_url,
@@ -100,15 +128,15 @@ class Controller_Assets {
 
 		/* Editor CSS */
 		if ( $do_admin_enqueue && $do_admin_editor_css_enqueue ) {
-			$editor_css_url  = plugins_url( 'css/plugin-admin-editor.css', MKDO_GROUND_CONTROL_ROOT );
-			$editor_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/css/plugin-admin-editor.css';
+			$editor_css_url  = plugins_url( 'assets/css/plugin-admin-editor' . $this->asset_suffix . '.css', MKDO_GROUND_CONTROL_ROOT );
+			$editor_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/assets/css/plugin-admin-editor' . $this->asset_suffix . '.css';
 			add_editor_style( $editor_css_url . '?v=' . $editor_css_path );
 		}
 
 		/* JS */
 		if ( $do_admin_enqueue && $do_admin_js_enqueue ) {
-			$plugin_js_url   = plugins_url( 'js/plugin-admin.js', MKDO_GROUND_CONTROL_ROOT );
-			$plugin_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/js/plugin-admin.js';
+			$plugin_js_url   = plugins_url( 'assets/js/plugin-admin' . $this->asset_suffix . '.js', MKDO_GROUND_CONTROL_ROOT );
+			$plugin_js_path  = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/assets/js/plugin-admin' . $this->asset_suffix . '.js';
 			wp_enqueue_script(
 				MKDO_GROUND_CONTROL_PREFIX . '-plugin-admin-js',
 				$plugin_js_url,

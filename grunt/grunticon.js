@@ -4,9 +4,9 @@ module.exports = {
 	icons: {
 		files: [{
 			expand: true,
-			cwd: '<%= siteInfo.assets_path %>/<%= siteInfo.icons_dir %>/',
+			cwd: '<%= siteInfo.assets_path_raw %>/<%= siteInfo.icons_dir %>/',
 			src: ['*.svg', '*.png'],
-			dest: '<%= pluginInfo.icons_dir %>',
+			dest: '<%= siteInfo.assets_path %>/<%= pluginInfo.icons_dir %>',
 		}],
 		options: {
 			enhanceSVG: true,

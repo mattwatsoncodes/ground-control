@@ -6,6 +6,6 @@ module.exports = {
 		title: '<%= siteInfo.fancy_name %> Parker Report'
 	},
 	css: {
-		src: '<%= siteInfo.assets_path %>/<%= siteInfo.css_dir %>/<%= siteInfo.sass_file %>.css'
+		src: '<%= siteInfo.assets_path_raw %>/<%= siteInfo.css_dir %>/<%= siteInfo.sass_file %>.css'
 	},
 };

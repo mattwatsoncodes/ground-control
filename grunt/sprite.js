@@ -7,11 +7,11 @@ module.exports = {
 	// -------------------------------------
 	all: {
 		src: [
-			'<%= siteInfo.assets_path %>/<%= siteInfo.img_dir %>/*.png',
-			'!<%= siteInfo.assets_path %>/<%= siteInfo.img_dir %>/sprite.png'
+			'<%= siteInfo.assets_path_raw %>/<%= siteInfo.img_dir %>/*.png',
+			'!<%= siteInfo.assets_path_raw %>/<%= siteInfo.img_dir %>/sprite.png'
 		],
-		dest: '<%= pluginInfo.img_dir %>/sprite.png',
-		destCss: '<%= siteInfo.assets_path %>/<%= siteInfo.sass_dir %>/base/_sprites.scss',
-		imgPath: '<%= pluginInfo.assets_path %>/<%= pluginInfo.img_dir %>/sprite.png?' + ( new Date().getTime() ),
+		dest: '<%= siteInfo.assets_path %>/<%= pluginInfo.img_dir %>/sprite.png',
+		destCss: '<%= siteInfo.assets_path_raw %>/<%= siteInfo.sass_dir %>/base/_sprites.scss',
+		imgPath: '<%= pluginInfo.assets_path_raw %>/<%= pluginInfo.img_dir %>/sprite.png?' + ( new Date().getTime() ),
 	}
 };
