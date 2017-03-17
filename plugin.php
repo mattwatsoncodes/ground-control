@@ -35,6 +35,7 @@ require_once 'php/class-helper.php';
 require_once 'php/class-settings.php';
 require_once 'php/class-controller-assets.php';
 require_once 'php/class-controller-main.php';
+require_once 'php/class-notices-admin.php';
 
 // Namespaces
 //
@@ -44,6 +45,7 @@ use mkdo\ground_control\Helper;
 use mkdo\ground_control\Settings;
 use mkdo\ground_control\Controller_Assets;
 use mkdo\ground_control\Controller_Main;
+use mkdo\ground_control\Notices_Admin;
 
 // Instances
 //
@@ -58,9 +60,11 @@ use mkdo\ground_control\Controller_Main;
 // These can easily be added to the list below and added to the main controller.
 $settings                 = new Settings();
 $controller_assets  	  = new Controller_Assets();
+$notices_admin  	      = new Notices_Admin();
 $controller_main          = new Controller_Main(
 	$settings,
-	$controller_assets
+	$controller_assets,
+	$notices_admin
 );
 
 // Go.
