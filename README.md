@@ -93,9 +93,9 @@ these views in your theme.
 Use the filter `mkdo_ground_control_view_template_folder` to set where the view
 sits within your theme. EG:
 
-`add_filter( 'mkdo_ground_control_view_template_folder', function() {
-	return get_stylesheet_directory() . '/template-parts/ground-control/';
-} );`
+`add_filter( 'mkdo_ground_control_view_template_folder', function() {  
+	return get_stylesheet_directory() . '/template-parts/ground-control/';  
+} );`  
 
 You can also return a boolean for the filter `mkdo_ground_control_view_template_folder_check_exists`
 to perform an optional check if the template exists in your theme. However best
@@ -115,7 +115,7 @@ To use this you will need to make the script executable via the command line usi
 You will be asked to confirm your GitHub and SVN repositories.
 
 ## [More Information](#more-information)
-You can find out more about the plugin, including the changelog in the [`readme.text` file](https://github.com/mwtsn/ground-control/blob/master/readme.txt), which the
+You can find out more about the plugin, including the changelog in the [`readme.txt` file](https://github.com/mwtsn/ground-control/blob/master/readme.txt), which the
 WordPress repository uses to display information about the plugin.
 
 You can also view the plugin on the WordPress repository here: N/A
