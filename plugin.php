@@ -95,6 +95,6 @@ add_action( 'after_setup_theme', function() {
 		//
 		// I may not get all these in, but I will roadmap what I cant get in
 		// immediately.
-		require_once 'tools/test/examples-run.php';
+		require_once 'examples/run.php';
 	}
 });

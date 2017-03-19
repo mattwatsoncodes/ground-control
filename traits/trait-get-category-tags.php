@@ -1,8 +1,6 @@
 <?php
 /**
- * Function get_category_tags
- *
- * Written for use as an include in class-helper.php
+ * Trait get_category_tags
  *
  * @since	0.1.0
  *
@@ -12,7 +10,7 @@
 namespace mkdo\ground_control;
 
 /**
- * Extend the Helper class
+ * Get tags associated with category
  */
 trait Helper_Get_Category_tags {
 
@@ -27,7 +25,7 @@ trait Helper_Get_Category_tags {
 	 * @return array                     Tags associated with the category
 	 */
 	public static function get_category_tags( $term_id = 0, $category_taxonomy = 'category', $tag_taxonomy = 'post_tag' ) { // @codingStandardsIgnoreLine
-		
+
 		global $wpdb;
 
 		// @codingStandardsIgnoreStart

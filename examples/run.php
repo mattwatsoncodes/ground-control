@@ -13,11 +13,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Classes.
-require_once __DIR__ . '/../../examples/class-post-example.php';
-require_once __DIR__ . '/../../examples/class-virtual-page-ground-control.php';
+require_once __DIR__ . '/class-helper-example.php';
+require_once __DIR__ . '/class-post-example.php';
+require_once __DIR__ . '/class-virtual-page-ground-control.php';
 
 // Namespaces.
-use mkdo\ground_control\Helper;
+use mkdo\ground_control\Helper_Example;
 use mkdo\ground_control\Post_Example;
 use mkdo\ground_control\Virtual_Page_Ground_Control;
 
@@ -43,7 +44,7 @@ add_filter( MKDO_GROUND_CONTROL_PREFIX . '_test_content', function() {
 				in the paragraph below should become a Twitter link:</p>';
 
 	$test     = '<p>The hashtag #wcldn should be a link.</p>';
-	$test     = Helper::convert_hashtags_to_twitter_urls( $test, true );
+	$test     = Helper_Example::convert_hashtags_to_twitter_urls( $test, true );
 	$content .= '<p>' . $test . '</p>';
 
 	$content .= '<h2>Convert Links to Link Tags</h2>';
@@ -52,7 +53,7 @@ add_filter( MKDO_GROUND_CONTROL_PREFIX . '_test_content', function() {
 				in the paragraph below should become a clickable link:</p>';
 
 	$test     = '<p>The link http://google.com should become a clickable link.</p>';
-	$test     = Helper::convert_links_to_link_tags( $test, true );
+	$test     = Helper_Example::convert_links_to_link_tags( $test, true );
 	$content .= '<p>' . $test . '</p>';
 
 	$content .= '<h2>Convert Mentions to Twitter URLs</h2>';
@@ -61,14 +62,14 @@ add_filter( MKDO_GROUND_CONTROL_PREFIX . '_test_content', function() {
 				in the paragraph below should become a Twitter link:</p>';
 
 	$test     = '<p>The mention @makedoers should become a Twitter link.</p>';
-	$test     = Helper::convert_mentions_to_twitter_urls( $test, true );
+	$test     = Helper_Example::convert_mentions_to_twitter_urls( $test, true );
 	$content .= '<p>' . $test . '</p>';
 
 	$content .= '<h2>Create GUID</h2>';
 
 	$content .= '<p>The following paragraph should contain a unique GUID:</p>';
 
-	$content .= '<p>This is a GUID: ' . Helper::create_guid() . '</p>';
+	$content .= '<p>This is a GUID: ' . Helper_Example::create_guid() . '</p>';
 
 	return $content;
 } );

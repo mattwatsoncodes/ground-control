@@ -9,15 +9,17 @@
 
 namespace mkdo\ground_control;
 
-// Traits.
-require_once 'helpers/trait-convert-hashtags-to-twitter-urls.php';
-require_once 'helpers/trait-convert-links-to-link-tags.php';
-require_once 'helpers/trait-convert-mentions-to-twitter-urls.php';
-require_once 'helpers/trait-create-guid.php';
-require_once 'helpers/trait-format-bytes.php';
-require_once 'helpers/trait-get-category-tags.php';
-require_once 'helpers/trait-get-icons.php';
-require_once 'helpers/trait-render-view.php';
+/**
+ * Traits
+ *
+ * Require all the traits you want to use in your Helper here. EG:
+ *
+ * require_once __DIR__ . '/../traits/trait-convert-hashtags-to-twitter-urls.php';
+ * require_once __DIR__ . '/../traits/trait-convert-links-to-link-tags.php';
+ * ...
+ *
+ * Then within the Helper Class include the traits with the 'Use' declaration.
+ */
 
 /**
  * Helper class containing useful static methods.
@@ -26,12 +28,18 @@ require_once 'helpers/trait-render-view.php';
  * this build.
  */
 class Helper {
-	use Helper_Convert_Hashtags_To_Twitter_URLs;
-	use Helper_Convert_Links_To_Link_Tags;
-	use Helper_Mentions_To_Twitter_URLs;
-	use Helper_Create_GUID;
-	use Helper_Format_Bytes;
-	use Helper_Get_Category_tags;
-	use Helper_Get_Icons;
-	use Helper_Render_View;
+
+	/**
+	 * Include Traits
+	 *
+	 * Include your traits here so that the methods can be called by
+	 * the Helper. EG:
+	 *
+	 * use Helper_Convert_Hashtags_To_Twitter_URLs;
+	 *
+	 * Having this line of code will enable you to envoke the method
+	 * as if it were part of this Class. EG:
+	 *
+	 * `Helper::convert_hashtags_to_twitter_urls( $content );`
+	 */
 }

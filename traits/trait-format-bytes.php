@@ -1,8 +1,6 @@
 <?php
 /**
- * Function format_bytes
- *
- * Written for use as an include in class-helper.php
+ * Trait format_bytes
  *
  * @since	0.1.0
  *
@@ -12,7 +10,7 @@
 namespace mkdo\ground_control;
 
 /**
- * Extend the Helper class
+ * Trait the Helper class
  */
 trait Helper_Format_Bytes {
 

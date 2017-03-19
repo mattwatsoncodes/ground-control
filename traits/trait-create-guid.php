@@ -1,8 +1,6 @@
 <?php
 /**
- * Function create_guid
- *
- * Written for use as an include in class-helper.php
+ * Trait create_guid
  *
  * @since	0.1.0
  *
@@ -12,7 +10,7 @@
 namespace mkdo\ground_control;
 
 /**
- * Extend the Helper class
+ * Create GUID
  */
 trait Helper_Create_GUID {
 

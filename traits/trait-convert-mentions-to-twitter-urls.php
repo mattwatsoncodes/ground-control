@@ -1,8 +1,6 @@
 <?php
 /**
- * Function convert_hashtags_to_twitter_urls
- *
- * Written for use as an include in class-helper.php
+ * Trait convert_hashtags_to_twitter_urls
  *
  * @since	0.1.0
  *
@@ -12,7 +10,7 @@
 namespace mkdo\ground_control;
 
 /**
- * Extend the Helper class
+ * Convert all mentioned into Twitter URLs
  */
 trait Helper_Mentions_To_Twitter_URLs {
 

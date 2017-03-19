@@ -27,6 +27,13 @@ class Virtual_Page_Ground_Control {
 	/**
 	 * Setup the Virtual Post data
 	 *
+	 * Note that the example below only deals with one specific
+	 * example of a virtual page, in that it injects it if the
+	 * slug does not exist.
+	 *
+	 * If you wanted to insert virtual pages in general you wouldn't
+	 * test for a specific page name.
+	 *
 	 * @param array $posts Posts.
 	 */
 	public function setup_virtual_post( $posts ) {

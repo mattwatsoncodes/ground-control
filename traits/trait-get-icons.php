@@ -1,8 +1,6 @@
 <?php
 /**
- * Function get_icons
- *
- * Written for use as an include in class-helper.php
+ * Trait get_icons
  *
  * @since	0.1.0
  *
@@ -12,14 +10,14 @@
 namespace mkdo\ground_control;
 
 /**
- * Extend the Helper class
+ * An array of icon ID's and Names from Font Awesome
  */
 trait Helper_Get_Icons {
 
 	/**
 	 * Get Icons
 	 *
-	 * An array of icon id's and Names from Font Awesome v4.7.
+	 * An array of icon ID's and Names from Font Awesome v4.7.
 	 *
 	 * @return array Icons
 	 */

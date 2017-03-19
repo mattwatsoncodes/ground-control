@@ -1,8 +1,6 @@
 <?php
 /**
- * Function convert_links_to_link_tags
- *
- * Written for use as an include in class-helper.php
+ * Trait convert_links_to_link_tags
  *
  * @since	0.1.0
  *
@@ -12,7 +10,7 @@
 namespace mkdo\ground_control;
 
 /**
- * Extend the Helper class
+ * Convert all links into clickable <a> tags
  */
 trait Helper_Convert_Links_To_Link_Tags {
 

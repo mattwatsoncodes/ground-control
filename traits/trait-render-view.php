@@ -1,8 +1,6 @@
 <?php
 /**
- * Function render_view
- *
- * Written for use as an include in class-helper.php
+ * Trait render_view
  *
  * @since	0.1.0
  *
@@ -12,14 +10,18 @@
 namespace mkdo\ground_control;
 
 /**
- * Extend the Helper class
+ * Get the path of a view
+ *
+ * Usage should be like so:
+ *
+ * `include render_view( 'view-example' );`
  */
 trait Helper_Render_View {
 
 	/**
 	 * Render View
 	 *
-	 * Render a view file. Note that this file contains a filter to enable view
+	 * Get the path of a view. Note that this file contains a filter to enable view
 	 * location override.
 	 *
 	 * @param  string $file_name File to render.
