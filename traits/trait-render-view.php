@@ -39,7 +39,7 @@ trait Helper_Render_View {
 		// make sure that the file exists before loading.
 		//
 		// First set the template path to theh default location.
-		$template_path = plugin_dir_path( __FILE__ ) . '../../views/' . $file_name . '.php';
+		$template_path = plugin_dir_path( __FILE__ ) . '../views/' . $file_name . '.php';
 
 		if ( ! empty( $view_template_folder ) && ! $view_template_folder_check_exists ) {
 
