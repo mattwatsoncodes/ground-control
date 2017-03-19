@@ -26,10 +26,10 @@ trait Helper_Convert_Hashtags_To_Twitter_URLs {
 	public static function convert_hashtags_to_twitter_urls( $content, $new_window = true ) {
 
 		$pattern     = '/#([A-Za-z0-9\/\.]*)/';
-		$replacement = '<a target=\"_blank\" href=\"http://twitter.com/search?q=$1\">#$1</a>';
+		$replacement = '<a target="_blank" href="http://twitter.com/search?q=$1">#$1</a>';
 
 		if ( ! $new_window ) {
-			$replacement = '<a href=\"http://twitter.com/search?q=$1\">#$1</a>';
+			$replacement = '<a href="http://twitter.com/search?q=$1">#$1</a>';
 		}
 
 		return preg_replace( $pattern, $replacement, $content );

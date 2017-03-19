@@ -26,10 +26,10 @@ trait Helper_Convert_Links_To_Link_Tags {
 	public static function convert_links_to_link_tags( $content, $new_window = true ) {
 
 		$pattern     = '/([\w]+\:\/\/[\w-?&;#~=\.\/\@]+[\w\/])/';
-		$replacement = '<a target=\"_blank\" href=\"$1\">$1</a>';
+		$replacement = '<a target="_blank" href="$1">$1</a>';
 
 		if ( ! $new_window ) {
-			$replacement 	= '<a href=\"$1\">$1</a>';
+			$replacement 	= '<a href="$1">$1</a>';
 		}
 
 		return preg_replace( $pattern, $replacement, $content );
