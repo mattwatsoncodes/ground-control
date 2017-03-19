@@ -45,7 +45,7 @@ module.exports = function(grunt) {
 				// Assets path relative to the project
 				// root - NO trailing slash.
 				// -------------------------------------
-				assets_path_raw: 'assets/',
+				assets_path_raw: 'assets/src',
 				assets_path: 'assets',
 
 				// -------------------------------------
