@@ -1,8 +1,8 @@
 # Ground Control
 
-A brief description of the plugin.
+A plugin framework, with lots and lots of useful examples and snippets.
 
-## [Useage](#useage)
+## [Usage](#usage)
 
 This plugin framework has been specifically configured for use by [Matt Watson](https://github.com/mwtsn/). Please fork this for your own plugin and make
 sure you do a find and replace for all the variables that make this thing yours.
@@ -18,15 +18,6 @@ Here are what to look for, and the defaults that are set (for you to find and re
 - Author URL: `https://makedo.net`
 - Constants Prefix: `MKDO_GROUND_CONTROL`
 - SVN Username: `mwtsn`
-
-## [About](#about)
-
-A more in depth description of the plugin.
-
-The plugin provides the following functionality:
-
-- Example functionality
-- etc...
 
 ## [Workflow](#workflow)
 
