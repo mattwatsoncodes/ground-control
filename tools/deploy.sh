@@ -184,7 +184,7 @@ cd $SVNPATH
 svn update --quiet $SVNPATH/tags/$PLUGINVERSION
 svn copy --quiet trunk/ tags/$PLUGINVERSION/
 # Remove assets and trunk directories from tag directory
-svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION/assets
+svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION/assets/wp-org
 svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION/trunk
 cd $SVNPATH/tags/$PLUGINVERSION
 svn commit --username=$SVNUSER -m "Tagging version $PLUGINVERSION"
