@@ -11,11 +11,6 @@
 **/.gitignore
 **/.gitmodules
 
-# Assets.
-# -------------------------------------
-assets/css/*
-assets/js/lib/_modernizr-custom.js
-
 # Composer.
 # -------------------------------------
 composer.lock

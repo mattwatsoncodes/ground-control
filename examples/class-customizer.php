@@ -24,7 +24,7 @@ class Customizer {
 	public function __construct() {}
 
 	/**
-	 * Unleash Hell.
+	 * Go.
 	 *
 	 * @since	0.1.0
 	 */

@@ -54,12 +54,12 @@ class Controller_Assets {
 	}
 
 	/**
-	 * Unleash Hell.
+	 * Go.
 	 *
 	 * @since	0.1.0
 	 */
 	public function run() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'public_enqueue_scripts' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'public_enqueue_scripts' ), 10 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10 );
 		add_action( 'customize_preview_init', array( $this, 'customize_preview_init' ), 10 );
 	}
@@ -83,8 +83,7 @@ class Controller_Assets {
 				MKDO_GROUND_CONTROL_PREFIX . '-plugin-css',
 				$plugin_css_url,
 				array(),
-				filemtime( $plugin_css_path ),
-				false
+				filemtime( $plugin_css_path )
 			);
 		}
 
@@ -122,8 +121,7 @@ class Controller_Assets {
 				MKDO_GROUND_CONTROL_PREFIX . '-plugin-admin-css',
 				$plugin_css_url,
 				array(),
-				filemtime( $plugin_css_path ),
-				false
+				filemtime( $plugin_css_path )
 			);
 		}
 

@@ -44,9 +44,9 @@ class Controller_Main {
 	/**
 	 * Constructor.
 	 *
-	 * @param 	Settings		  $settings          Define the settings page.
-	 * @param 	Controller_Assets $controller_assets Enqueue the public and admin assets.
-	 * @param 	Notices_Admin     $notices_admin     Notices on the admin screens.
+	 * @param Settings          $settings          Define the settings page.
+	 * @param Controller_Assets $controller_assets Enqueue the public and admin assets.
+	 * @param Notices_Admin     $notices_admin     Notices on the admin screens.
 	 *
 	 * @since 0.1.0
 	 */
@@ -57,11 +57,11 @@ class Controller_Main {
 	) {
 		$this->settings           = $settings;
 		$this->controller_assets  = $controller_assets;
-		$this->notices_admin	  = $notices_admin;
+		$this->notices_admin      = $notices_admin;
 	}
 
 	/**
-	 * Unleash Hell.
+	 * Go.
 	 *
 	 * @since		0.1.0
 	 */
