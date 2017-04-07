@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   PLUGIN SCSS
+   ========================================================================== */
+
+/**
+ * CSS for the plugin front end.
+ *
+ * This CSS in this plugin has been lovingly buit with the
+ * [Inuit CSS](https://github.com/inuitcss) framework. By
+ * [Harry Roberts](https://csswizardry.com).
+ *
+ * The CSS here should exist here just for reference. We highly recommend that
+ * you delete, this CSS and create your own within your existing theme, and
+ * concatinate it within your existing workflow.
+ */
+
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Config...............Project-level configuration and feature switches.
+ * Core.................inuitcss’ core and setup settings.
+ * Global...............Project-wide variables and settings.
+ *
+ * TOOLS
+ * Clearfix.............Micro clearfix mixin.
+ * Hidden...............Mixin for hiding elements.
+ *
+ * OBJECTS
+ * Box..................Simple boxing abstraction (Example Entry).
+ *
+ * COMPONENTS
+ * Buttons..............Button component (Example Entry).
+ *
+ * UTILITIES
+ * Clearfix.............Bind our clearfix onto a utility class.
+ * Hide.................Helper classes to hide content
+ */
+
+// SETTINGS
+@import "settings/settings.config";
+@import "../../../tools/bower_components/inuitcss/settings/settings.core";
+@import "settings/settings.global";
+
+
+
+
+
+// TOOLS
+// @import "../../../tools/bower_components/inuitcss/tools/tools.font-size";
+@import "../../../tools/bower_components/inuitcss/tools/tools.clearfix";
+@import "../../../tools/bower_components/inuitcss/tools/tools.hidden";
+// @import "../../../tools/bower_components/inuitcss/node_modules/sass-mq/mq";
+
+
+
+
+
+// GENERIC
+// @import "../../../tools/bower_components/inuitcss/generic/generic.box-sizing";
+// @import "../../../tools/bower_components/inuitcss/generic/generic.normalize";
+// @import "../../../tools/bower_components/inuitcss/generic/generic.reset";
+// @import "../../../tools/bower_components/inuitcss/generic/generic.shared";
+
+
+
+
+
+// ELEMENTS
+// @import "../../../tools/bower_components/inuitcss/elements/elements.page";
+// @import "../../../tools/bower_components/inuitcss/elements/elements.headings";
+// @import "../../../tools/bower_components/inuitcss/elements/elements.images";
+// @import "../../../tools/bower_components/inuitcss/elements/elements.tables";
+
+
+
+
+
+// OBJECTS
+//
+// Uncomment and add to this section as necessary.
+// @import "../../../tools/bower_components/inuitcss/objects/objects.wrapper";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.layout";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.media";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.flag";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.list-bare";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.list-inline";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.box";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.block";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.ratio";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.crop";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.table";
+// @import "../../../tools/bower_components/inuitcss/objects/objects.pack";
+
+
+
+
+
+// COMPONENTS
+//
+// Build and include your project’s UI Compoments here.
+// @import "components/components.alerts";
+// @import "components/components.buttons";
+// @import "components/components.login-forms";
+
+
+
+
+
+// UTILITIES
+@import "../../../tools/bower_components/inuitcss/utilities/utilities.clearfix";
+
+// $inuit-offsets: false;
+// @import "../../../tools/bower_components/inuitcss/utilities/utilities.widths";
+// @import "../../../tools/bower_components/inuitcss/utilities/utilities.headings";
+// @import "../../../tools/bower_components/inuitcss/utilities/utilities.spacings";
+// @import "../../../tools/bower_components/inuitcss/utilities/utilities.responsive-spacings";
+// @import "../../../tools/bower_components/inuitcss/utilities/utilities.print";
+@import "../../../tools/bower_components/inuitcss/utilities/utilities.hide";

@@ -12,6 +12,7 @@
 		"bower_components"
 	],
 	"dependencies": {
-		"modernizr": "latest"
+		"modernizr": "latest",
+		"inuitcss": "^6.0.0-beta.4"
 	}
 }
