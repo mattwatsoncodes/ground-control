@@ -4,6 +4,7 @@
 
 /**
  * 1. Make the inputs full width.
+ * 2. Add the default spacing to seperate the elements.
  */
 
 .c-login-form__input {
@@ -12,6 +13,7 @@
 	input[type=email],
 	input[type=password] {
 		width: 100%; /* [1] */
+		margin-bottom: $inuit-global-spacing-unit; /* [2] */
 	}
 }
 
