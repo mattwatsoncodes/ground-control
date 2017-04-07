@@ -3,17 +3,17 @@
    ========================================================================== */
 
 /**
- * 1. Make the inputs full width.
- * 2. Add the default spacing to seperate the elements.
+ * 1. Add the default spacing to seperate the elements.
+ * 2. Make the inputs full width.
  */
 
 .c-login-form__input {
+	margin-bottom: $inuit-global-spacing-unit; /* [1] */
 
 	input[type=text],
 	input[type=email],
 	input[type=password] {
-		width: 100%; /* [1] */
-		margin-bottom: $inuit-global-spacing-unit; /* [2] */
+		width: 100%; /* [2] */
 	}
 }
 
