@@ -4,15 +4,15 @@
  *
  * @since	0.1.0
  *
- * @package mkdo\front_end_login
+ * @package mkdo\ground_control
  */
 
-namespace mkdo\front_end_login;
+namespace mkdo\ground_control;
 
 /**
  * Get the slug of a page from the URL
  */
-trait Helper_Page_Slug_From_Url {
+trait Helper_Page_Slug_From_URL {
 
 	/**
 	 * Page Slug from URL
@@ -28,22 +28,32 @@ trait Helper_Page_Slug_From_Url {
 		// Try a whole bunch of ways to get the slug from WP Query.
 		if (
 			property_exists( $wp_query, 'query' ) &&
-			isset( $wp_query->query['pagename'] )
+			isset( $wp_query->query['attachment'] ) &&
+			! empty( $wp_query->query['attachment'] )
+		) {
+			$slug = $wp_query->query['attachment'];
+		} elseif (
+			property_exists( $wp_query, 'query' ) &&
+			isset( $wp_query->query['pagename'] ) &&
+			! empty( $wp_query->query['pagename'] )
 		) {
 			$slug = $wp_query->query['pagename'];
 		} elseif (
 			property_exists( $wp_query, 'query' ) &&
-			isset( $wp_query->query['name'] )
+			isset( $wp_query->query['name'] ) &&
+			! empty( $wp_query->query['name'] )
 		) {
 			$slug = $wp_query->query['name'];
 		} elseif (
 			property_exists( $wp_query, 'query_vars' ) &&
-			isset( $wp_query->query_vars['pagename'] )
+			isset( $wp_query->query_vars['pagename'] ) &&
+			! empty( $wp_query->query_vars['pagename'] )
 		) {
 			$slug = $wp_query->query_vars['pagename'];
 		} elseif (
 			property_exists( $wp_query, 'query_vars' ) &&
-			isset( $wp_query->query_vars['name'] )
+			isset( $wp_query->query_vars['name'] ) &&
+			! empty( $wp_query->query_vars['name'] )
 		) {
 			$slug = $wp_query->query_vars['name'];
 		} else {
