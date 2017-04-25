@@ -129,7 +129,7 @@ class Controller_Assets {
 		if ( $do_admin_enqueue && $do_admin_editor_css_enqueue ) {
 			$editor_css_url  = plugins_url( 'assets/css/plugin-admin-editor' . $this->asset_suffix . '.css', MKDO_GROUND_CONTROL_ROOT );
 			$editor_css_path = dirname( MKDO_GROUND_CONTROL_ROOT ) . '/assets/css/plugin-admin-editor' . $this->asset_suffix . '.css';
-			add_editor_style( $editor_css_url . '?v=' . $editor_css_path );
+			add_editor_style( $editor_css_url . '?v=' . filemtime( $editor_css_path ) );
 		}
 
 		/* JS */
